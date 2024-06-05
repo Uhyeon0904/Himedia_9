@@ -17,38 +17,52 @@
     <script src="https://unpkg.com/react-redux@8.1.3/dist/react-redux.js"></script>
     <!-- 리덕스 액션즈 -->
     <script src="https://unpkg.com/redux-actions@2.6.5/dist/redux-actions.js"></script>
-    <!-- 리덕스 로거 -->
-    <script src="https://unpkg.com/redux-logger@3.0.6/dist/redux-logger.js"></script>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
 
+        /* 미들웨어 여러 개 적용 시 우선 순위 확인 */
+        const firstMiddleware = store => next => action => {
+            console.log('firstMiddleware');
+            const result = next(action);
+            return result;
+        };
+
+        const secondMiddleware = store => next => action => {
+            console.log('secondMiddleware');
+            const result = next(action);
+            return result;
+        };
+
+        const thirdMiddleware = store => next => action => {
+            console.log('thirdMiddleware');
+            const result = next(action);
+            return result;
+        };
+
         /* ------------------------------- modules ------------------------------------- */
         const {createAction, createActions, handleActions} = ReduxActions;
 
         /* 초기 값 설정 */
-        const initialState = [];
+        const initialState = 0;
 
         /* 액션 */
-        const FETCH_DATA = 'FETCH_DATA';
+        const INCREMENT = 'count/INCREASE';
+        const DECREMENT = 'count/DECREASE';
 
-        const {fetchData} = createActions({
-            [FETCH_DATA]: () => {}
-        });
+        const {count: {increase, decrease}} = createActions({
+            [INCREMENT]: (amount = 1) => ({incrementValue: amount}),
+            [DECREMENT]: (amount = 1) => ({decrementValue: amount})
+        })
 
-        /* 미들 웨어 */
-        const fetchUser = store => next => async (action) => {
-            const userData = await axios('https://jsonplaceholder.typicode.com/users')
-                .then(res => res.data);
-            next({...action, payload: userData});
-        }
-
-        /* Reducer */
         const reducer = handleActions({
-            [FETCH_DATA] : (state, {payload}) => {
-                return [...payload];
+            [INCREMENT] : (state, {payload: {incrementValue}}) => {
+                return state + incrementValue;
+            },
+            [DECREMENT] : (state, {payload: {decrementValue}}) => {
+                return state - decrementValue;
             }
         }, initialState);
 
@@ -58,32 +72,43 @@
 
         function App() {
 
-            const users = useSelector(state => state);
+            const count = useSelector(state => state);
             const dispatch = useDispatch();
 
-            const onClickHandler = () => {
-                dispatch(fetchData());
-                console.log('user: ', users);
-            }
+            /* 함수 호출 */
+            const increaseCount = () => {
+                dispatch(increase(5));
+            };
+
+            /* 함수 호출 */
+            const decreaseCount = () => {
+                dispatch(decrease(5));
+            };
 
             return(
                 <>
-                    <h1>{`회원 목록`}</h1>
-                    <button onClick={onClickHandler}>조회하기</button>
-                    <ul>
-                        {users.map(user => <li key={user.id}>{user.name}</li>)}
-                    </ul>
+                    <h1>{`Count: ${count}`}</h1>
+                    <button onClick={increaseCount}>+5</button>
+                    <button onClick={decreaseCount}>-5</button>
                 </>
             )
         }
 
         /* -------------------------------- store --------------------------------------- */
 
-        const { createStore, applyMiddleware } = Redux;
         const {Provider} = ReactRedux;
+        const { createStore, applyMiddleware, compose } = Redux;
         
         /* 리듀서 함수를 전달하며 상태 값을 관리할 스토어 생성 */
-        const store = createStore(reducer, applyMiddleware(fetchUser));
+        const store = createStore(
+            reducer,
+            /* 미들웨어를 적용하겠다. 
+            * apply에 추가한 순서대로 우선순위를 가진다. */
+            compose(
+                applyMiddleware(secondMiddleware, firstMiddleware, thirdMiddleware),
+                window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+            )
+        );
 
         /* Provider: App이 store를 구독하고 있을 수 있도록 기능을 처리 
         * 컴포넌트로 store를 props로 전달하면 하위 컴포넌트는 store를 자동으로 구동하게 된다. 

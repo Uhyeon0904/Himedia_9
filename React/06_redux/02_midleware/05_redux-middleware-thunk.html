@@ -34,12 +34,16 @@
         /* 액션 */
         const FETCH_DATA = 'FETCH_DATA';
 
-        const {fetchData} = createActions({
-            [FETCH_DATA]: () => {}
-        });
-
         /* 미들 웨어 */
-        const fetchUser = store => next => async (action) => {
+        const thunkMiddleware = ({dispatch, getState}) => next => action => {
+            if (typeof action === 'function') {
+                return action(dispatch, getState);
+            }
+            return next(action);
+        }
+
+        /* 콜백으로 사용할 비동기 함수 (API 호출 로직) */
+        const fetchUser = async (dispatch, getState) => {
             const userData = await axios('https://jsonplaceholder.typicode.com/users')
                 .then(res => res.data);
             next({...action, payload: userData});
@@ -62,7 +66,7 @@
             const dispatch = useDispatch();
 
             const onClickHandler = () => {
-                dispatch(fetchData());
+                dispatch(fetchUser);
                 console.log('user: ', users);
             }
 
@@ -83,7 +87,7 @@
         const {Provider} = ReactRedux;
         
         /* 리듀서 함수를 전달하며 상태 값을 관리할 스토어 생성 */
-        const store = createStore(reducer, applyMiddleware(fetchUser));
+        const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
         /* Provider: App이 store를 구독하고 있을 수 있도록 기능을 처리 
         * 컴포넌트로 store를 props로 전달하면 하위 컴포넌트는 store를 자동으로 구동하게 된다. 
