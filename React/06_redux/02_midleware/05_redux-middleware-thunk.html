@@ -46,7 +46,7 @@
         const fetchUser = async (dispatch, getState) => {
             const userData = await axios('https://jsonplaceholder.typicode.com/users')
                 .then(res => res.data);
-            next({...action, payload: userData});
+            dispatch({type: FETCH_DATA, payload: userData});
         }
 
         /* Reducer */
