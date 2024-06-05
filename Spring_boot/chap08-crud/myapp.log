@@ -1,0 +1,13 @@
+2024-04-21T10:35:13.863+09:00  INFO 18652 --- [restartedMain] c.o.crud.configuration.Application       : Starting Application using Java 17.0.10 with PID 18652 (C:\WEB\DEV\lecture-code\JavaFoundation\Spring_boot\chap08-crud\build\classes\java\main started by USER in C:\WEB\DEV\lecture-code\JavaFoundation\Spring_boot\chap08-crud)
+2024-04-21T10:35:13.869+09:00  INFO 18652 --- [restartedMain] c.o.crud.configuration.Application       : No active profile set, falling back to 1 default profile: "default"
+2024-04-21T10:35:13.905+09:00  INFO 18652 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-21T10:35:13.906+09:00  INFO 18652 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-21T10:35:14.726+09:00  INFO 18652 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T10:35:14.735+09:00  INFO 18652 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T10:35:14.735+09:00  INFO 18652 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-21T10:35:14.795+09:00  INFO 18652 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T10:35:14.795+09:00  INFO 18652 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 889 ms
+2024-04-21T10:35:15.049+09:00  INFO 18652 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-21T10:35:15.249+09:00  INFO 18652 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-21T10:35:15.275+09:00  INFO 18652 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T10:35:15.281+09:00  INFO 18652 --- [restartedMain] c.o.crud.configuration.Application       : Started Application in 1.831 seconds (process running for 2.412)

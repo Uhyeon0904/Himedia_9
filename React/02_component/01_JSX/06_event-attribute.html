@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /* 이벤트 핸들러는 HTML에 삽입 되는 게 아닌 자바스크립트로 적용이 된다. */
+        // const element = (
+        //     <>
+        //         <h1>Event Attribute</h1>
+        //         <button onClick={() => alert('Hello World!')}>클릭해보세요</button>
+        //     </>
+        // );
+
+        const onClickhandler = () => {
+            alert('Hello World');
+        };
+
+        /* 이벤트 핸들러를 분리하여 사용법 */
+        const element = (
+            <>
+                <h1>Event Attribute</h1>
+                <button onClick={onClickhandler}>클릭해보세요</button>
+            </>
+        );
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+    </script>
+</body>
+</html>

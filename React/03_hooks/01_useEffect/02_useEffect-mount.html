@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const {useState, useEffect} = React;
+
+        function TimePrinter() {
+
+            const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+            console.log('렌더링');
+
+            useEffect (
+
+                /* 수행할 동작 - 콜백 함수 */
+                () => {console.log('useEffect 동작')},
+
+                /* 의존성 배열을 빈 배열로 설정하면 업데이트 시점에는 동작하지 않는다. 
+                * 의존성 배열에 전달 된 값이 update 되어야 콜백 함수를 호출 한다. */
+                []
+            );
+
+            return (
+                <>
+                    <button onClick={ () => setTime(new Date().toLocaleTimeString())}>현재 시간 확인</button>
+                    <h1>{time}</h1>
+                </>
+            );
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<TimePrinter/>);
+    </script>
+</body>
+</html>

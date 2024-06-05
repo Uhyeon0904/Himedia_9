@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.comprehensive.board.dao.BoardMapper">
+
+  <resultMap type="com.ohgiraffers.comprehensive.board.dto.BoardDTO" id="generalBoardResultMap" >
+        <id property="boardNo" column="board_no"/>
+        <association property="writer" resultMap="memberResultMap"/>
+        <association property="category" resultMap="categoryResultMap"/>
+        <collection property="replyList" resultMap="replyResultMap"/>
+    </resultMap>
+
+    <resultMap type="com.ohgiraffers.comprehensive.member.dto.MemberDTO" id="memberResultMap" >
+        <id property="memberNo" column="member_no"/>
+    </resultMap>
+
+    <resultMap type="com.ohgiraffers.comprehensive.board.dto.CategoryDTO" id="categoryResultMap" >
+        <id property="categoryCode" column="category_code"/>
+    </resultMap>
+
+   <resultMap type="com.ohgiraffers.comprehensive.board.dto.ReplyDTO" id="replyResultMap">
+       <id property="replyNo" column="reply_no"/>
+       <result property="createdDate" column="r_created_date"/>
+       <association property="writer" javaType="com.ohgiraffers.comprehensive.member.dto.MemberDTO">
+           <id property="memberNo" column="r_member_no"/>
+           <result property="nickname" column="r_nickname"/>
+       </association>
+   </resultMap>
+
+       <resultMap type="com.ohgiraffers.comprehensive.board.dto.BoardDTO" id="thumbnailBoardResultMap">
+           <id property="boardNo" column="board_no"/>
+           <association property="writer" resultMap="memberResultMap"/>
+           <collection property="attachmentList" resultMap="attachmentResultMap"/>
+       </resultMap>
+
+
+       <resultMap type="com.ohgiraffers.comprehensive.board.dto.AttachmentDTO" id="attachmentResultMap">
+           <id property="attachmentNo" column="attachment_no"/>
+       </resultMap>
+
+    <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+        SELECT 
+        	   COUNT(*)
+        FROM
+            tbl_board a
+        <if test="searchCondition == 'category'">
+        JOIN
+            tbl_category b ON(a.category_code = b.category_code)
+        </if>
+        <if test="searchCondition == 'writer'">
+        JOIN
+            tbl_member b ON(a.board_writer_member_no = b.member_no)
+        </if>
+        <where>
+            <if test="searchCondition == 'category'">
+                b.category_name = #{ searchValue }
+            </if>
+            <if test="searchCondition == 'writer'">
+                b.nickname LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'title'">
+                a.board_title LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'content'">
+                a.board_body LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            AND
+                a.board_type = 1
+            AND
+                a.board_status = 'Y'
+        </where>
+    </select>
+
+  <select id="selectBoardList" resultMap="generalBoardResultMap">
+        SELECT 
+	        a.board_no,
+	        a.board_type,
+	        b.category_code,
+	        b.category_name,
+	        a.board_title,
+	        a.board_body,
+	        c.nickname,
+	        a.board_count,
+	        a.created_date
+        FROM
+            tbl_board a
+        JOIN
+            tbl_category b ON(a.category_code = b.category_code)
+        JOIN
+            tbl_member c ON(a.board_writer_member_no = c.member_no)
+        <where>
+            <if test="searchCondition == 'category'">
+                b.category_name = #{ searchValue }
+            </if>
+            <if test="searchCondition == 'writer'">
+                c.nickname LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'title'">
+                a.board_title LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            <if test="searchCondition == 'content'">
+                a.board_body LIKE CONCAT('%', #{ searchValue }, '%')
+            </if>
+            AND a.board_status = 'Y'
+            AND a.board_type = 1
+        </where>
+        ORDER BY
+            a.board_no DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <update id="incrementBoardCount">
+        UPDATE 
+            tbl_board
+        SET
+            board_count = board_count + 1
+        WHERE
+            board_no = #{boardNo}
+    </update>
+
+    <select id="selectBoardDetail" resultMap="generalBoardResultMap">
+        SELECT 
+            a.board_no,
+            a.board_title,
+            a.board_body,
+            b.member_no,
+            b.nickname,
+            a.board_count,
+            a.created_date,
+            c.category_name,
+            d.reply_no,
+            d.reply_body,
+            d.created_date r_created_date,
+            e.member_no r_member_no,
+            e.nickname r_nickname
+        FROM
+            tbl_board a
+        JOIN
+            tbl_member b ON (a.board_writer_member_no = b.member_no)
+        JOIN
+            tbl_category c ON (a.category_code = c.category_code)
+        LEFT JOIN
+            tbl_reply d ON (a.board_no = d.ref_board_no AND d.reply_status = 'Y')
+        LEFT JOIN
+            tbl_member e ON (d.reply_writer_member_no = e.member_no)
+        WHERE
+            a.board_no = #{ boardNo }
+        AND
+            a.board_status = 'Y'
+        ORDER BY
+            d.reply_no
+    </select>
+
+<insert id="insertReply">
+    INSERT
+    INTO tbl_reply
+        (ref_board_no, reply_body, reply_writer_member_no)
+    VALUES
+        (#{ refBoardNo }, #{ replyBody }, #{ writer.memberNo })
+</insert>
+
+<select id="selectReplyList" resultMap="replyResultMap">
+    SELECT
+        a.reply_no,
+        a.ref_board_no,
+        a.reply_body,
+        a.reply_writer_member_no,
+        a.created_date r_created_date,
+        b.member_no r_member_no,
+        b.nickname r_nickname
+    FROM
+        tbl_reply a
+    JOIN
+        tbl_member b ON(a.reply_writer_member_no = b.member_no)
+    WHERE
+        a.ref_board_no = #{ refBoardNo }
+      AND
+        a.reply_status = 'Y'
+    ORDER BY
+        a.reply_no
+</select>
+
+<update id="deleteReply">
+    UPDATE
+        tbl_reply
+    SET
+        reply_status = 'N'
+    WHERE
+        reply_no = #{ replyNo }
+</update>
+
+<insert id="insertBoard">
+    INSERT
+    INTO tbl_board
+        (board_type, category_code, board_title, board_body, board_writer_member_no)
+    VALUES
+        (#{boardType}, #{ category.categoryCode }, #{ boardTitle }, #{ boardBody }, #{ writer.memberNo })
+    <selectKey keyProperty="boardNo" order="AFTER" resultType="long">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+</insert>
+
+<insert id="insertAttachment">
+    INSERT
+    INTO tbl_attachment
+        (ref_board_no, original_name, saved_name, save_path, file_type, thumbnail_path)
+    VALUES
+        (#{refBoardNo}, #{ originalName }, #{ savedName }, #{ savePath }, #{ fileType }, #{ thumbnailPath, jdbcType=VARCHAR })
+</insert>
+
+<select id="selectThumbnailTotalCount" resultType="_int">
+    SELECT
+        COUNT(*)
+    FROM
+        tbl_board
+    WHERE
+        board_type = 2
+    AND
+        board_status = 'Y'
+</select>
+
+<select id="selectThumbnailBoardList" resultMap="thumbnailBoardResultMap">
+    SELECT
+        a.board_no,
+        a.board_title,
+        a.board_writer_member_no,
+        b.nickname,
+        c.file_type,
+        c.thumbnail_path,
+        a.board_count,
+        a.created_date
+    FROM
+        tbl_board a
+    JOIN
+        tbl_member b ON(a.board_writer_member_no = b.member_no)
+    JOIN
+        tbl_attachment c ON (a.board_no = c.ref_board_no AND attachment_status = 'Y')
+    WHERE
+        a.board_type = 2
+    AND
+        a.board_status = 'Y'
+    ORDER BY
+        a.board_no DESC
+    LIMIT #{offset}, #{limit}
+</select>
+
+<select id="selectThumbnailBoardDetail" resultMap="thumbnailBoardResultMap">
+    SELECT
+        a.board_no,
+        a.board_title,
+        a.board_body,
+        a.board_writer_member_no,
+        b.nickname,
+        a.board_count,
+        a.created_date,
+        c.attachment_no,
+        c.original_name,
+        c.saved_name,
+        c.save_path,
+        c.file_type,
+        c.thumbnail_path
+    FROM
+        tbl_board a
+    JOIN
+        tbl_member b ON(a.board_writer_member_no = b.member_no)
+    JOIN
+        tbl_attachment c ON (a.board_no = c.ref_board_no AND attachment_status = 'Y')
+    WHERE
+        a.board_no = #{ boardNo }
+    AND
+        a.board_status = 'Y'
+</select>
+
+</mapper>
+

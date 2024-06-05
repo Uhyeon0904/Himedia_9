@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        /* 요청 주소 : https://api.github.com/emojis 
+         * useState, props, event, 비동기 통신 이용해서 입력 된 값과 일치하는 emoji를 img에 보여주는 프로그램 작성
+         * 일치하는 값이 없을 경우 img를 랜더링하지 않는다.
+        */
+
+        const { useState } = React;
+
+        function SearchBox({ setImgUrl }) {
+            /* 4. 입력 받은 값을 emojiName을 사용하여 활용 */
+            const [emojiName, setEmojiName] = useState('');
+
+            const onClickHandler = () => {
+                /* 7. axios를 사용하여 api 호출(모든 키:값이 담겨있는 객체) */
+                axios('https://api.github.com/emojis')
+                    /* 8. data 형태의 값 도출 
+                    * 9. 검색 된 값 data에서 찾은 후 호출한 고차함수로 전달*/
+                    .then(res => setImgUrl(res.data[emojiName]))
+            }
+
+            /* 3. 입력 받은 값을 state에서 관리 */
+            const onChangeHandler = (e) => setEmojiName(e.target.value)
+
+            return (
+                <>
+                    {/* 1-2. 검색 값 입력 */}
+                    <input
+                        type="text"
+                        name="emojiName"
+                        /* 2. 입력한 값의 변화가 있을 때 이벤트 동작 */
+                        onChange={onChangeHandler}
+                        /* 5. 관리되고 있는 값을 value에 삽입 */
+                        value={emojiName}
+                    />
+                    {/* 6. 값 입력 후 검색 클릭하여 onClick 함수 실행 */}
+                    <button onClick={onClickHandler}>검색</button>
+                </>
+            );
+        }
+
+        /* 13. 호출한 고차함수 img 전달받기 */
+        function ImageBox({ img }) {
+            const imgStyle = {
+                width: 500,
+                height: 500
+            }
+
+            /* 14. img AND 연산자 */
+            return (
+                img && <img src={img} style={imgStyle}/>
+            );
+        }
+
+        /* 1-1. SearchBox, ImageBox 모두 렌더링 */
+        function App() {
+            /* 11. 콜백함수에서 전달 받은 값 저장 */
+            const [imgUrl, setImgUrl] = useState("");
+
+            return (
+                <>
+                    {/* 1-1-1. 우항 피연산자를 좌항 피연산자에 대입 */}
+                    <SearchBox setImgUrl={setImgUrl} />
+                    <br />
+                    {/* 12. state에서 관리 되는 imgUrl을 좌항 피연산자에 대입 및 콜백함수 호출 */}
+                    <ImageBox img={imgUrl} />
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

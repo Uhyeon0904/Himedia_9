@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /* React.createElement: ? */
+        // 한 줄 주석
+        /* 여러
+        * 줄
+        * 주석 */
+
+        const element = (
+            <>
+                <h1>Commnet in JSX</h1>
+                {/* JSX 내에서의 주석은 이렇게 작성 합니다. */}
+
+                {
+                    //한 줄 주석
+                }
+
+                <h3 
+                    className="text" // 한 줄 주석은 표현식을 한 줄이 아닌 여러 줄로 작성하면 적용할 수 있다.
+                >JSX 내의 주석 사용하는 방법</h3>
+            </>
+        )
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+    </script>
+</body>
+</html>

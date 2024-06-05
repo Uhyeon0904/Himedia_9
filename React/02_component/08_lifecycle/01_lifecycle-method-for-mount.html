@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class Greeting extends React.Component {
+            
+            /* 1. 클래스 컴포넌트를 새로 만들 때마다 호출 되는 생성자 메서드 */
+            constructor(props) {
+                super(props);
+                console.log('constructor')
+
+                this.state = {
+                    text: '초기값'
+                }
+            };
+
+            /* 2. props에 있는 값을 state에 넣을 때 사용되는 메소드 */
+            static getDerivedStateFromProps(props, state) {
+
+                console.log('getDerivedStateFromProps');
+
+                /* props의 text 값과 state의 text 값이 같지않을 경우 props의 text(어디에 있는 text?)에 넣어준다. */
+                /* 조건에 따라 특정 값만 동기화 */
+                if (props.text !== state.text) {
+                    
+                    /* 변경할 state 값을 반환 */
+                    return {text: props.text}
+                }
+
+                /* state를 변경할 필요가 없다면 null 반환 */
+                return null;
+            }
+
+            /* 3. 리액트 엘리먼트를 렌더 트리 형태로 구성하는 시점에 호출되는 메서드 */
+            render() {
+                /* 렌더링 될 컴포넌트의 형태를 리액트 컴포넌트로 반환한다.
+                * 라이프 사이클 메서드 중 유일한 필수 메서드이다.
+                * 아무 컴포넌트도 보여주고 싶지 않을 경우 null 또는 falsy 값을 반환 한다. */
+               
+                /* 주의 사항
+                * render 메서드 내에서 이벤트 설정이 아닌 곳에 setState 메서드를 사용하면 안 된다.
+                * 또한 DON에 직접 접근해서도 안 된다.
+                * DOM 정보를 가져오나 state에 */
+            //    this.setState({text: '테스트'});
+                console.log('render');
+
+                return(
+                    <>
+                        <h1>{this.state.text}</h1>
+                    </>
+                )
+            }
+            /* 4. 컴포넌트가 웹 브라우저 상 나타난 후 호출 되는 메서드 
+            * 요청이나 비동기 처리할 때 사용 */
+            componentDidMount() {
+
+                /* 다른 자바스크립트 라이브러리 또는 프레임워크의 함수를 호출하거나
+                * 이벤트 등록, setTimerout, setInterval, 네트워크 요청과 같은 비동기 작업을 처리하면 된다. */
+                console.log('componentDidMount')
+            }
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Greeting text='홍길동'/>);
+    </script>
+</body>
+</html>

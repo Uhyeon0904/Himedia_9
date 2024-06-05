@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        /* prompt: 입력창 */
+        const answer = parseInt(prompt('리액트가 재미있으신가용?\n1.재미있다. \n2.너무 재미있다.'));
+
+        /* 1.렌더링 시 조건 비교 후 조건부 렌더링하기(조건식이 심플할 때) */
+        // const answer1element = <h1>앞으로 점점 더 재미있어질 거에요~!!~~!</h1>
+        // const answer2element = <h1>당신도 내일은 리액트 마스터~!!~~!</h1>
+        // root.render(
+        //     (answer === 1) ? answer1element : answer2element
+        // );
+
+        /* 2. JSX 내에서 조건부로 엘리먼트 생성 */
+        /* IF문을 이용한 조건부 엘리먼트 생성 */
+        // let element;
+        // if (answer === 1) {
+        //     element = <h1>앞으로 점점 더 재미있어질 거에요~!!~~!</h1>;
+        // } else {
+        //     element = <h1>당신도 내일은 리액트 마스터~!!~~!</h1>
+        // }
+
+        /* 삼항 연산자를 이용한 조건부 엘리먼트 생성 */
+        // const element = (answer === 1) ? (
+        //     <h1>앞으로 점점 더 재미있어질 거에요~!!~~!</h1>
+        // ) : (
+        //     <h1>당신도 내일은 리액트 마스터~!!~~!</h1>
+        // );
+
+        /* && 연산자를 이용한 조건부 엘리먼트 생성 */
+        // const element = answer === 1 && <h1>앞으로 점점 더 재미있어질 거에요~!!~~!</h1>
+
+        /* Falsy 값: null, undefiend, 0, NaN, '' */
+        const number = 0;
+        const element = number && <h1>truthy일 때 나오는 태그</h1>
+
+        /* falsy 값이지만 element로 취급 된다. */
+        root.render(element);
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.comprehensive.member.dao.MemberMapper">
+
+	<select id="findByMemberId" resultType="com.ohgiraffers.comprehensive.member.dto.MemberDTO">
+        SELECT
+            member_no,
+            member_id,
+            member_pwd,
+            nickname,
+            phone,
+            email,
+            address,
+            enroll_date,
+            member_role,
+            member_status
+        FROM
+            tbl_member
+        WHERE
+            member_status = 'Y'
+        AND
+            member_id = #{ memberId }
+    </select>
+
+    <select id="selectMemberById" resultType="string">
+        SELECT
+            member_id
+        FROM
+            tbl_member
+        WHERE
+            member_status = 'Y'
+        AND
+            member_id = #{ memberId }
+    </select>
+
+    <insert id="insertMember">
+        INSERT INTO
+            tbl_member (member_id, member_pwd, nickname, phone, email, address)
+        VALUES
+            (#{ memberId }, #{ memberPwd }, #{ nickname }, #{ phone }, #{ email }, #{ address })
+    </insert>
+
+    <select id="selectEncryptedPwd" resultType="string">
+        SELECT
+            member_pwd
+        FROM
+            tbl_member
+        WHERE
+            member_status = 'Y'
+        AND
+            member_id = #{ memberId }
+    </select>
+
+    <select id="selectMember" resultType="com.ohgiraffers.comprehensive.member.dto.MemberDTO">
+        SELECT
+            member_no,
+            member_id,
+            nickname,
+            phone,
+            email,
+            address,
+            enroll_date,
+            member_role,
+            member_status
+        FROM
+            tbl_member
+        WHERE
+            member_status = 'Y'
+        AND
+            member_id = #{ memberId }
+    </select>
+
+    <update id="updateMember">
+        UPDATE
+            tbl_member
+        SET
+            nickname = #{ nickname },
+            phone = #{ phone },
+            email = #{ email },
+            address = #{ address }
+        WHERE
+            member_status = 'Y'
+        AND
+            member_no = #{ memberNo }
+    </update>
+
+    <update id="deleteMember">
+        UPDATE
+            tbl_member
+        SET
+            member_status = 'N'
+        WHERE
+            member_status = 'Y'
+        AND
+            member_id = #{ memberId }
+    </update>
+
+</mapper>

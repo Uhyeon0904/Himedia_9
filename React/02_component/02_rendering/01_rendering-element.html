@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /* 리액트 객체는 한 번 생성되면 변경 할 수 없는 불변 객체이다. 
+        * 업데이트를 하려면 새로운 객체를 만들고 렌더링 해야된다. */
+        const element = (
+            <>
+                <h1>What time is it now?</h1>
+                <h3>It is {new Date().toLocaleTimeString()}</h3>
+            </>
+        )
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+    </script>
+</body>
+</html>

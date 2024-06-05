@@ -1,0 +1,9 @@
+spring:
+  servlet:
+    multipart:
+      #설정 파일에서는 백슬래시가 개행문자로 인식할 수 있으니, 슬래시 사용을 권장, ctrl + shift + c 경로
+      location: C:/Himedia/dev/lecture_code/JavaFoundation/Spring_boot/chap07-file-upload
+      max-file-size: 10MB
+      # 파일 업로드시 허용 가능한 최대 사이즈
+      max-request-size: 10MB
+      # 클라이언트가 http 요청을 보낼 때 보낼 수 있는 최대 사이즈

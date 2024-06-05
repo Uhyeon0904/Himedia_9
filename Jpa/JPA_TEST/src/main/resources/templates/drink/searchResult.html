@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search result</title>
+</head>
+<body>
+    <h1>[[${drinkPrice}]]원 이상인 음료 목록</h1>
+    <table>
+        <tr>
+            <th>음료번호</th>
+            <th>음료이름</th>
+            <th>음료가격</th>
+            <th>카테고리코드</th>
+        </tr>
+        <tr th:each="drink : ${ drinks }">
+            <th th:text="${ drink.drinkCode }"></th>
+            <th th:text="${ drink.drinkName }"></th>
+            <th th:text="${ drink.drinkPrice }"></th>
+            <th th:text="${ drink.categoryCode }"></th>
+        </tr>
+    </table>
+</body>
+</html>

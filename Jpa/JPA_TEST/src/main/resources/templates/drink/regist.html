@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regist menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>신규 음료 등록</h1>
+
+    <form action="/drink/regist" method="post">
+        <label>음료 이름 : </label><input type="text" name="drinkName"><br>
+        <label>음료 가격 : </label><input type="number" name="drinkPrice"><br>
+        <label>카테고리 : </label>
+            <select name="categoryCode" id="categoryCode">
+            </select><br>
+        <input type="submit" value="음료 등록">
+    </form>
+
+    <script>
+        axios('/drink/nativeQueryCategory')
+            .then(res => {
+                const data = res.data;
+                const $categoryCode = document.getElementById('categoryCode');
+
+                for(let index in data) {
+                    const $option = document.createElement('option');
+                    $option.value = data[index].categoryCode;
+                    $option.textContent = data[index].categoryName;
+
+                    $categoryCode.appendChild($option);
+                }
+            });
+    </script>
+</body>
+</html>

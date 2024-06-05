@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+    <h1>single file upload</h1>
+<!--    파일을 넘길 때는 encoding type "multipart/form-data" 설정을 꼭 해줘야 한다. -->
+    <form action="single-file" method="post" enctype="multipart/form-data">
+        파일 : <input type="file" name="singleFile"><br>
+        파일 설명 : <input type="text" name="singleFileDescription"><br>
+        <input type="submit">
+    </form>
+
+    <h1>multi file upload</h1>
+    <form action="multi-file" method="post" enctype="multipart/form-data">
+        <!-- multiple: 파일을 여러 개 등록 할 수 있다. -->
+        파일 : <input type="file" name="multiFile" multiple><br>
+        파일 설명 : <input type="text" name="multiFileDescription"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>

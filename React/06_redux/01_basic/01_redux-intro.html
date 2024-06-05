@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+</head>
+<body>
+    <script>
+
+        const {createStore} = Redux;
+
+        /* Reducer 함수 작성 (Store의 state 변경 시 사용) 
+        * (state, action) => state 형태의 순수 함수로 작성한다. */
+       function counter(state = 0, action) {
+        /* state: read only 읽기 전용, 수정이 되면 안 된다. */
+
+        /* action은 스토어에 운반할 데이터를 말하며 주문서와 비슷한 개념이다.
+        {
+                type: 'ACTION_NAME'                 //필수
+                payload: { name: '홍길동', age: 20} // 옵션
+        } */
+
+            /* 액션 타입이 인크리먼트 일 때 스테이트의 값을 1 증가 시키겠다. */
+            switch(action.type) {
+                case 'INCREMENT':
+                    return state + 1;
+                case 'DECREMENT':
+                    return state - 1;
+                default :
+                    return state;
+            }
+       }
+
+        /* 리덕스 저장소 생성 : 앱의 상태를 보관하는 장소 */
+        const store = createStore(counter);     // 리듀서 함수를 전달하며 생성
+
+        /* store가 제공하는 api는 subscribe, dispatch, getState가 있다. */
+        /* 스토어의 상태 변화를 구독할 함수를 콜백 형태로 작성 */
+        store.subscribe( () => console.log(store.getState()));
+        /* subscribe: store에 변화가 생긴다면 콜백함수가 호출될 것이다. */
+
+        /* dispatch: 리듀서 함수를 호출하며, 리듀서 함수의 첫 번째 매개변수인 state는 현재 상태를
+        * 두 번째 매개변수인 action은 dispatch를 통해 전달한 객체가 된다. */
+       store.dispatch({type: 'INCREMENT'});
+       store.dispatch({type: 'INCREMENT'});
+       store.dispatch({type: 'DECREMENT'});
+    </script>
+</body>
+</html>

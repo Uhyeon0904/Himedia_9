@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaFoundation.iml" filepath="$PROJECT_DIR$/.idea/JavaFoundation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TEST/TEST.iml" filepath="$PROJECT_DIR$/TEST/TEST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap01-literal-and-variable-lecture-source/chap01-literal-and-variable-lecture-source.iml" filepath="$PROJECT_DIR$/chap01-literal-and-variable-lecture-source/chap01-literal-and-variable-lecture-source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap02-operator-lecture-source/chap02-operator-lecture-source.iml" filepath="$PROJECT_DIR$/chap02-operator-lecture-source/chap02-operator-lecture-source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap03-method-and-api-lecture-source/chap03-method-and-api-lecture-source.iml" filepath="$PROJECT_DIR$/chap03-method-and-api-lecture-source/chap03-method-and-api-lecture-source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap04-control-flow-lecture-source/chap04-control-flow-lecture-source.iml" filepath="$PROJECT_DIR$/chap04-control-flow-lecture-source/chap04-control-flow-lecture-source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap05-array-lecture-source/chap05-array-lecture-source.iml" filepath="$PROJECT_DIR$/chap05-array-lecture-source/chap05-array-lecture-source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chap06-class-and-object-lecture-source/chap06-class-and-object-lecture-source.iml" filepath="$PROJECT_DIR$/chap06-class-and-object-lecture-source/chap06-class-and-object-lecture-source.iml" />
+    </modules>
+  </component>
+</project>

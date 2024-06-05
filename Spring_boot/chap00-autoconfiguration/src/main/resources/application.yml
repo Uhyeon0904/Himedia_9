@@ -1,0 +1,6 @@
+test:
+#  yml 파일에서는 키와 값 한 칸 띄워서 작성, 두 개 이상의 키 값을 넣을 때 유효, 그룹 설정이 가능
+  greeting: hi!
+  array: 안녕, 반가워~
+  value: hell world
+username: 판다

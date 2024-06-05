@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- render(): 반드시 작성되어야 하며, 반환 값으로는 렌더링 될 리액트 엘리먼트를 정의한다. -->
+    <script type="text/babel">
+        class Title extends React.Component {
+            render() {
+                return (
+                    <h1>Class Component</h1>
+                )
+            }
+        }
+
+        /* 클래스형 컴포넌트는 렌더링 시 태그 모양으로 감싸고 클래스명을 적어야한다. */
+        /* 클래스형 컴포넌트를 만들게 되면 사용자 정의 컴포넌트를 엘리먼트 형태로 사용할 수 있다.
+        * 1. 앞글자 대문자, 2. 닫기 태그 존재, 3. 클래스나 함수 이름과 동일해야 함 */
+        ReactDOM.createRoot(document.getElementById('root')).render(<Title/>);
+    </script>
+</body>
+</html>

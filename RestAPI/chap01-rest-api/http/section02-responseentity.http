@@ -1,0 +1,32 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+### 전체 회원 조회
+GET http://localhost:8080/entity/users
+
+### 특정 회원 조회
+GET http://localhost:8080/entity/users/4
+
+### 신규 회원 등록
+POST http://localhost:8080/entity/users
+Content-Type: application/json
+
+{
+  "id" : "user04",
+  "pwd" : "pass04",
+  "name": "코알라"
+}
+
+### 기존 회원 수정
+PUT http://localhost:8080/entity/users/1
+Content-Type: application/json
+
+{
+  "id" : "user01",
+  "pwd" : "pass01",
+  "name": "뱀"
+}
+
+### 회원 삭제
+DELETE http://localhost:8080/entity/users/1

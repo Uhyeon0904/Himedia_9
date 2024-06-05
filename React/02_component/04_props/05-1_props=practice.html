@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const user = {
+            name: '판다',
+            age: 20,
+            phone: '010-1234-5678',
+            email: 'panda@gmail.com',
+        };
+
+        const user2 = {
+            name: '다람쥐',
+            age: 16,
+            phone: '010-9876-5432',
+            email: 'squirrel@gmail.com'
+        };
+
+        const user3 = {
+            name: '코알라',
+            age: 30,
+            phone: '010-5555-3333',
+            email: 'koala@gmail.com'
+        };
+
+        function NameCard({name}) {
+            return <h1>{name}</h1>
+        }
+
+        function AgeCard({age}) {
+            return <h2>{age}</h2>
+        }
+
+        function PhoneCard({phone}) {
+            return <h3>{phone}</h3>
+        }
+
+        function EmailCard({email}) {
+            return <h3>{email}</h3>
+        }
+
+        function UserInfo({user}) {   // const {user} = props;
+            return (
+                <>
+                    <NameCard name={user.name}/>
+                    <AgeCard age={user.age}/>
+                    <PhoneCard phone={user.phone}/>
+                    <EmailCard email={user.email}/>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            [
+                <UserInfo user={user} />,  // props.user = {user}
+                <UserInfo user={user2}/>,
+                <UserInfo user={user3}/>
+            ]
+        );
+    </script>
+</body>
+
+</html>

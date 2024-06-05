@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /* 컴포넌트 합성:
+            컴포넌트는 재사용 가능한 크기로 작게 유지해야 하며, 순수 함수처럼 작성되어야 한다. 
+        * 자신의 컴포넌트 안에 다른 컴포넌트를 참조해서 합성(?)한다. */
+
+        const user = {
+            name: '홍길동',
+            age: 20,
+            phone: '010-1234-5678',
+            email: 'hong123@gmail.com'
+        };
+
+        function NameCard ({name}) {
+            return <h1>{name}</h1>
+        }
+
+        function AgeCard({age}) {
+            return <h2 style={{color: 'orangered'}}>{age}</h2>
+        }
+
+        function PhoneCard({phone}) {
+            return <h3 style={{backgroundColor: 'yellow'}}>{phone}</h3>
+        }
+
+        function EmailCard({email}) {
+            return <h3 style={{color: 'red'}}>{email}</h3>
+        }
+
+        /* 합성 방법 */
+        function UserInfo({user}) {
+            return (
+                <div style={{width: 300, border: '1px solid black'}}>
+                    <NameCard name={user.name}/>
+                    <AgeCard age={user.age}/>
+                    <PhoneCard phone={user.phone}/>
+                    <EmailCard email={user.email}/>
+                </div>
+            )
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render([
+            <UserInfo user={user}/>
+        ]);
+    </script>
+</body>
+</html>

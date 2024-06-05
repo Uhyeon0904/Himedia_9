@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!--  컴포넌트 합성의 코드를 참조하되 props를 활용하여 렌더링 해보기 -->
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const user = {
+            name: '판다',
+            age: 20,
+            phone: '010-1234-5678',
+            email: 'panda@gmail.com'
+        };
+
+        const user2 = {
+            name: '다람쥐',
+            age: 16,
+            phone: '010-9876-5432',
+            email: 'squirrel@gmail.com'
+        };
+
+        const user3 = {
+            name: '코알라',
+            age: 30,
+            phone: '010-5555-3333',
+            email: 'koala@gmail.com'
+        };
+
+        function NameCard({name}) {
+            return <h1>{name}</h1>
+        }
+
+        function AgeCard({age}) {
+            return <h2 style={{ color: 'orangered' }}>{age}</h2>
+        }
+
+        function PhoneCard({phone}) {
+            return <h3 style={{ backgroundColor: 'yellow' }}>{phone}</h3>
+        }
+
+        function EmailCard({email}) {
+            return <h3 style={{ color: 'red' }}>{name}</h3>
+        }
+
+        function UserInfo({user}) {
+            return (
+                <div style={{width: 200, border: '1px solid black', margin: '0 auto'}}>
+                    <NameCard name={user.name}/>
+                    <AgeCard age={user.age}/>
+                    <PhoneCard phone={user.phone}/>
+                    <EmailCard email={user.email}/>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            [
+                <UserInfo user={user}/>,
+                <UserInfo user={user2}/>,
+                <UserInfo user={user3}/>
+            ]
+        );
+
+        // function UserInfo({ name, age, phone, email }) {
+        //     return (
+        //         <>
+        //             <h1>{name} 님</h1>
+        //             <h2>{age}살</h2>
+        //             <h2>{phone}</h2>
+        //             <h2>{email}</h2>
+        //         </>
+        //     );
+        // }
+
+        // ReactDOM.createRoot(document.getElementById('root')).render(
+        //     [
+        //         <UserInfo name={user.name} age={user.age} phone={user.phone} email={user.email}></UserInfo>,
+        //         <UserInfo name={user2.name} age={user2.age} phone={user2.phone} email={user2.email}></UserInfo>,
+        //         <UserInfo name={user3.name} age={user3.age} phone={user3.phone} email={user3.email}></UserInfo>
+        //     ]
+        // );
+
+    </script>
+</body>
+
+</html>

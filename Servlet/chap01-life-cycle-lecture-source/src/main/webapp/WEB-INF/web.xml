@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <servlet>
+        <!--    이름을 정해줄 수 있다   -->
+        <servlet-name>xmlmapping</servlet-name>
+        <!--    경로 지정   -->
+        <servlet-class>com.ohgiraffers.section01.xml.LifeCycleTestServlet</servlet-class>
+        <!---->
+        <load-on-startup>100</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <!--    위에서 작성한 이름을 가져오는 것  -->
+        <servlet-name>xmlmapping</servlet-name>
+        <!--    서블렛 클래스에 등록 되어있는 경로에 어노테이션에 등록된 value 값과 일치해야 한다.
+            <a href="xml-lifecycle">라이프사이클 테스트(xml)</a> 일치 해야한다. -->
+        <url-pattern>/xml-lifecycle</url-pattern>
+    </servlet-mapping>
+</web-app>

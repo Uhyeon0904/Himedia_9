@@ -1,0 +1,2501 @@
+@charset "UTF-8";
+@import url(reset.css);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* section{margin-bottom:50px} */
+#sect5 .sect5inner, #sect6, #sect7, #sect8{margin-top: 100px;}
+
+
+ /* #sect1 -------------------------------------------------------------------- */
+#sect1 {
+    height: 100vh;
+    position: relative;
+}
+
+#sect1 nav {
+    margin: auto;
+    width: 380px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    margin-top: 66px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+#sect1 nav ul {
+    display: flex;
+}
+
+#sect1 nav ul li {
+    display: none;
+    padding: 0 15px;
+}
+
+#sect1 .logo {
+    display: none;
+}
+
+.menubar {
+    width: 38px;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+
+#sect1 .mySwiper2 .swiper-slide::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.741);
+    z-index: 1;
+}
+
+#sect1 .mySwiper2 {
+    height: 100vh;
+    position: relative;
+    z-index: 4;
+}
+
+#sect1 .mySwiper2 .swiper-slide {
+    position: relative;
+}
+
+#sect1 .mySwiper2 .swiper-slide>img {
+    width: 100%;
+    height: 100vh;
+}
+
+#sect1 .top_btns button {
+    z-index: 6;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#sect1 .top_btns button img:hover {
+    opacity: .8;
+}
+
+#sect1 .mySwiper2 .swiper-slide .desc {
+    width: 480px;
+    position: absolute;
+    bottom: 110px;
+    left: 260px;
+    transform: translate(-50%);
+    z-index: 3;
+}
+
+#sect1 .desc .star{
+    display: flex;
+    margin-top: 20px
+}
+
+#sect1 .desc .star li{
+   padding-right: 10px;
+}
+
+#sect1 .desc .p1 {
+    font-size: 20px;
+    color: #999999;
+}
+
+#sect1 .desc h1 {
+    font-size: 50px;
+    color: white;
+    margin-top: 15px;
+}
+
+#sect1 .desc .p3 {
+    font-size: 20px;
+    color: white;
+    margin-top: 15px;
+}
+
+#sect1 .desc .more {
+    width: 229px;
+    height: 61px;
+    border-radius: 30px;
+    border: 1px solid rgb(255, 255, 255);
+    background: none;
+}
+
+#sect1 .desc .more a {
+    color: white;
+    font-size: 24px;
+}
+
+#sect1 .desc .btn {
+    border: none;
+    background: none;
+}
+
+#sect1 .btn_box {
+    margin-top: 50px;
+    display: flex;
+}
+
+#sect1 .btn_box button {
+    margin-right: 15px;
+}
+#sect1 .backBg_1 {
+    background-image: url(../img/sect1_img1.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#sect1 .backBg_2 {
+    background-image: url(../img/sect1_img2.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#sect1 .backBg_3 {
+    background-image: url(../img/sect1_img3.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#sect1 .backBg_4 {
+    background-image: url(../img/sect1_img4.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#sect1 .backBg_5 {
+    background-image: url(../img/sect1_img5.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#sect1 .backBg_6 {
+    background-image: url(../img/sect1_img6.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#sect1 .backBg_7 {
+    background-image: url(../img/sect1_img7.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#sect1 .backBg_8 {
+    background-image: url(../img/sect1_img8.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+ /* #sect2 -------------------------------------------------------------------- */
+#sect2 .inner {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 100px 0;
+    margin: auto;
+}
+
+#sect2 .inner figure {
+    position: absolute;
+    right: -60px;
+    height: 180px;
+    width: 180px;
+}
+
+#sect2 .inner figure img {
+    height: 100%;
+}
+
+#sect2 .desc h2 {
+    font-size: 36px;
+}
+
+#sect2 p.intro {
+    font-size: 20px;
+    font-weight: 500;
+    color: #7cb0bb;
+    padding-top: 33px;
+}
+
+#sect2 p.intro2 {
+    line-height: 1.8;
+    font-size: 18px;
+    padding-top: 15px;
+}
+
+ /* #sect3 -------------------------------------------------------------------- */
+
+#sect3 {
+    height: 100vh;
+    min-height: 927px;
+    position: relative;
+    overflow: hidden;
+}
+
+#sect3 article {
+    width: 90%;
+    height: 50%;
+    margin: auto;
+    border-radius: 15px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 0;
+}
+
+#sect3 article.on,
+#sect3 article.on .inner .left_box .tit_box,
+#sect3 article.on .right_box figure {
+    opacity: 1;
+    z-index: 5;
+}
+
+#sect3 article.on .btn_box {
+    opacity: 1;
+    z-index: 9;
+}
+
+#sect3 #art1,
+#sect3 #art6 {
+    background: #7CB0BB;
+}
+
+#sect3 #art1 .colora a,
+#sect3 #art6 .colora a {
+    color: #7CB0BB;
+}
+
+#sect3 #art2,
+#sect3 #art7 {
+    background: #9BC178;
+}
+
+#sect3 #art2 .colora a,
+#sect3 #art7 .colora a {
+    color: #9BC178;
+}
+
+#sect3 #art3,
+#sect3 #art5 {
+    background: #F9B748;
+}
+
+#sect3 #art3 .colora a,
+#sect3 #art5 .colora a {
+    color: #F9B748;
+}
+
+#sect3 #art4,
+#sect3 #art8 {
+    background: #FFB5C5;
+}
+
+#sect3 #art4 .colora a,
+#sect3 #art8 .colora a {
+    color: #FFB5C5;
+}
+
+#sect3 article .inner {
+    width: 100%;
+    height: 80%;
+    min-height: 80%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sect3 .right_box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#sect3 article .inner .left_box {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+}
+
+#sect3 article .inner .left_box .tit_box {
+    position: absolute;
+    width: 240px;
+    left: 50%;
+    top: -230%;
+    transform: translate(-50%);
+    transition: .5s;
+    opacity: 0;
+}
+
+#sect3 article .btn_box {
+    width: 100%;
+    position: absolute;
+    bottom: -40%;
+    left: 75%;
+    transform: translate(-50%);
+    transition: .5s linear;
+    transition-delay: .4s;
+    opacity: 0;
+}
+
+#sect3 article .left_box .tit_box p.name {
+    font-size: 22px;
+    color: #F9B748;
+}
+
+#sect3 article .left_box .tit_box h3 {
+    font-size: 30px;
+    color: black;
+}
+
+#sect3 article .btn_box h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+}
+
+#sect3 article .btn_box p {
+    font-size: 18px;
+    white-space: nowrap;
+    color: white;
+}
+
+#sect3 article .btn_box p.jpan {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.604);
+}
+
+#sect3 .left_box button {
+    width: 140px;
+    height: 46px;
+    border-radius: 40px;
+    border: 1px solid rgb(255, 255, 255);
+    margin-top: 40px;
+    margin-right: 15px;
+    background-color: white;
+}
+
+#sect3 .left_box button a {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+}
+
+#sect3 .left_box button a span {
+    padding-left: 20px;
+}
+
+#sect3 .left_box button.right_btn {
+    background: none;
+}
+
+#sect3 article .right_box figure.on {
+    width: 280px;
+    top: -170%;
+    left: 55%;
+}
+
+#sect3 article .right_box figure.on2 {
+    width: 500px;
+    top: -195%;
+    left: 60%;
+}
+
+#sect3 article .right_box figure {
+    width: 450px;
+    position: absolute;
+    left: 50%;
+    top: -189%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 2s;
+}
+
+#sect3 #art1 .inner figure {
+    left: 57%;
+    top: -180%;
+}
+
+#sect3 #art2 .inner figure {
+    left: 50%;
+    top: -170%;
+}
+
+#sect3 #art3 .inner figure {
+    left: 40%;
+    top: -180%;
+}
+
+#sect3 #art4 .inner figure {
+    left: 35%;
+    top: -190%;
+}
+
+#sect3 #art5 .inner figure {
+    left: 45%;
+    top: -190%;
+}
+
+#sect3 #art6 .inner figure {
+    left: 50%;
+    top: -170%;
+}
+
+#sect3 #art7 .inner figure {
+    left: 30%;
+    top: -150%;
+}
+
+#sect3 #art8 .inner figure {
+    left: 50%;
+    top: -170%;
+}
+
+#sect3 #art1 .inner figure img {
+    width: 100%;
+}
+
+#sect3 #art2 .inner figure img {
+    width: 100%;
+}
+
+#sect3 #art3 .inner figure img {
+    width: 130%;
+}
+
+#sect3 #art4 .inner figure img {
+    width: 130%;
+}
+
+#sect3 #art5 .inner figure img {
+    width: 140%;
+}
+
+
+#sect3 #art6 .inner figure img {
+    width: 80%;
+}
+
+#sect3 #art7 .inner figure img {
+    width: 150%;
+}
+
+#sect3 #art8 .inner figure img {
+    width: 130%;
+}
+
+#sect3 .inner figure img {
+    width: 200%;
+}
+
+
+#sect3 .bg_box li:first-child {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #7CB0BB;
+}
+
+
+#sect3 span.pointer {
+    display: none;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    left: 0;
+    top: -5px;
+}
+
+#sect3 .tab_menu {
+    width: 95%;
+    border-top: 1px solid rgb(255, 255, 255);
+    position: absolute;
+    left: 50%;
+    bottom: 13%;
+    transform: translate(-50%);
+    z-index: 8;
+}
+
+#sect3 .tab_menu .tab_inner {
+    max-width: 95%;
+    width: 88%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#sect3 .tab_menu .tab_inner a {
+    color: white;
+    font-size: 14px;
+    margin: 0px 10px;
+    position: relative;
+    border-radius: 50%;
+}
+
+#sect3 .tab_menu .tab_inner a span {
+    display: none;
+}
+
+
+/* #sect4 -------------------------------------------------------------------- */
+#sect4 p.name{
+    text-align: left;
+}
+
+#sect4 h2{
+    text-align: left;
+}
+
+#sect4 article #senbg{
+    height: 50vh;
+    width: 100%;
+    background: url(../img/sect4_sen_bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#sect4 article .desc1,
+#sect4 article .desc2,
+#sect4 article .desc3{
+    padding: 50px 66px;
+}
+
+
+#sect4 article .desc1 h3{
+    font-size: 16px;
+    color: #999999;
+}
+
+
+#sect4 article .desc1 ul{
+    padding: 23px 0;
+    display: flex;
+}
+
+#sect4 article .desc1 ul li{
+    font-size: 16px;
+    padding-right: 17px;
+}
+
+#sect4 article .desc1 ul li span{
+    color: #F9B748;
+}
+
+#sect4 article .desc1 p{
+    font-size: 16px;
+    color: #999;
+}
+
+#sect4 article .desc1 p.name{
+    font-size: 22px;
+    color: #F9B748;
+}
+
+#sect4 article #howlbg{
+    height: 50vh;
+    width: 100%;
+    background: url(../img/sect4_howl_bg.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#sect4 article #ponyobg{
+    height: 50vh;
+    width: 100%;
+    background: url(../img/sect4_ponyo_bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#sect4 article .desc2,
+#sect4 article .desc3{
+    display: none;
+}
+
+#sect4 article .desc2 .talk p{
+    padding: 15px 0;
+}
+
+#sect4 article .desc2 p.name{
+    color: #F9B748;
+}
+
+#sect4 article .desc2 ul{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#sect4 article .desc3{
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+#sect4 article .desc3 img{
+    width: 50%;
+    vertical-align: top;
+}
+#sect4 .desc2 ul li{
+    position: relative;
+    cursor: pointer;
+    text-align: center;}
+/* ------------------------------------------ul li hover-- */
+#sect4 .desc2 ul li:hover p{display: block;}
+#sect4 .desc2 ul li p{
+    position: absolute;
+    display: none;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 95.5%;
+    border-radius: 50%;
+    color: white;
+}
+#sect4 .desc2 ul li span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    line-height: 20px;
+    transform: translate(-50%,-50%);
+    display: inline-block;
+}
+
+
+ /* #sect5 -------------------------------------------------------------------- */
+
+
+#sect5 .wd {
+    position: relative;
+}
+
+#sect5 .btn {
+    position: absolute;
+    width: 130px;
+    top: 50px;
+    right: 0;
+}
+
+.flexBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+#sect5 .swiper-slide div>img {
+    width: 331px;
+    height: 483px;
+    cursor: pointer;
+    vertical-align: top;
+    position: relative;
+}
+
+#sect5 .slideInner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -52px;
+    width: 331px;
+    height: 483px;
+    background: rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+    z-index: -999;
+}
+
+
+#sect5 .slideInner {
+    display: none;
+    position: absolute;
+    width: 340px;
+    height: 483px;
+    bottom: 15px;
+    left: 0;
+    color: #ffffff;
+    padding: 320px 20px 20px 20px;
+    z-index: 999;
+}
+
+#sect5 .swiper-slide:hover .slideInner {
+    display: block;
+}
+
+#sect5 .swiper-slide:hover .bigimg {
+    width: 331px;
+    height: 483px;
+    transform: scale(1.1);
+}
+
+.bigimg.bigon .play {
+    width: 50px;
+    height: 50px;
+}
+
+.play img {
+    width: 100%;
+}
+
+#sect5 .title {
+    font-size: 30px;
+    letter-spacing: -1.8px;
+}
+
+#sect5 .desc,
+.time {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.time {
+
+    margin: 10px 0 20px 0;
+    border-top: 1px solid #ffffff;
+    padding-top: 10px;
+}
+
+.swiper-button-prev:after,
+.swiper-container-rtl .swiper-button-next:after {
+    content: 'prev';
+    display: none;
+}
+
+.swiper-button-next:after,
+.swiper-container-rtl .swiper-button-prev:after {
+    content: 'next';
+    display: none;
+}
+
+#sect5 .swiper-wrapper {
+    padding: 40px;
+}
+
+
+ /* #sect6 -------------------------------------------------------------------- */
+#sect6 h2 {
+    margin-bottom: 30px;
+}
+
+#sect6 h2 {
+    font-size: 32px;
+}
+
+#sect6 p.name {
+    color: #F9B748;
+    font-size: 22px;
+}
+
+#sect6 ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+#sect6 ul li img {
+    vertical-align: top;
+    width: 100%;
+}
+
+#sect6 figure {
+    position: relative
+}
+
+#sect6 .dim {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+}
+
+#sect6 ul li.dimBg .dim {
+    display: block;
+}
+
+#sect6 ul li {
+    position: relative;
+    cursor: pointer;
+}
+
+#sect6 .desc {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    color: white;
+}
+
+#sect6 .like span {
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    margin-right: 5px;
+    background: url(../img/sect6_heart.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+ /* #sect7 -------------------------------------------------------------------- */
+#sect7 .inner {
+    position: relative;
+    margin: auto;
+}
+
+#sect7 .product {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    margin: 50px 0;
+}
+
+#sect7 .product a {
+    width: 20%;
+}
+
+#sect7 .product a img {
+    width: 80%;
+}
+
+#sect7 .product li:nth-child(n+3) a img {
+    margin-top: 50px;
+}
+
+#sect7 .product h6 {
+    font-size: 16px;
+    font-weight: 300;
+    color: #999;
+    margin-top: 28px;
+}
+
+#sect7 .product h4 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#sect7 .product p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+#sect7 .btn {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+#sect7 .btn span {
+    margin-right: 5px;
+}
+
+#sect7 .inner>h2 {
+    font-size: 36px;
+}
+ /* #sect8 -------------------------------------------------------------------- */
+#sect8 ul {
+    z-index: 10;
+}
+
+#sect8 ul li:nth-child(2) {
+    margin: 50px 0;
+}
+
+#sect8 .name {
+    color: #f9b748;
+}
+
+#sect8 h3 {
+    cursor: pointer;
+}
+
+#sect8 h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+#sect8 .more img {
+    margin-right: 10px;
+}
+
+#sect8 .movie {
+    position: relative;
+    margin-top: 10px;
+    background-image: url(../img/sect8_maru.jpg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+#sect8 .movie::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #00000072;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#sect8 .movie::before {
+    content: '';
+    background-image: url(../img/sect8_btn.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sect8 .movie,
+#sect8 ul {
+    margin-top: 50px;
+}
+
+#sect8 .date {
+    margin-right: 10px;
+}
+
+#sect8 .date,
+.view {
+    color: #999999;
+}
+
+#sect8 .mobileMore {
+    display: none;
+}
+
+
+
+/* ----------------------------- */
+
+
+.topbtn{
+    position: relative; width: 80%; margin: auto; 
+}
+.toptop{position: absolute; width: 150px; height: 200px; right: 0;}
+.toptop img{width: 100%;}
+
+/* footer -------------------------------------------------------------------- */
+footer {
+    background: #222223;
+    padding: 50px 0;
+    margin-top: 100px;
+}
+
+.footNav li.lv1 a {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.footNav ul.lv2 {
+    margin-top: 10px;
+}
+
+.footNav ul.lv2 a {
+    font-size: 18px;
+    color: #BEBEBE;
+}
+
+.footNav {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .sns {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foot .info {
+    width: 40%;
+}
+
+.foot .copy {
+    color: white;
+    font-size: 14px;
+}
+
+.foot .copy p {
+    width: 540px;
+    margin: 10px 0;
+}
+
+footer .foot {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copy p.nhn {
+    color: #8A9098;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* 모바일 */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+@media screen and (max-width:767px) {
+    .inner {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+
+    p.name {
+        color: #F9B748;
+    }
+    #sect5 .sect5inner{margin-top: 0px;}
+ /* #sect1 -------------------------------------------------------------------- */
+    #sect1 .top_btns{
+        position: absolute;
+        z-index: 5;
+        right: 20px;
+        top: 64px;
+    }
+ /* #sect2 -------------------------------------------------------------------- */
+    #sect2 figure{
+        display: none;
+    }
+
+    #sect2 p.intro{
+        text-align: left; 
+        letter-spacing: -1px;
+    }
+
+    #sect2 p.intro2{ 
+        text-align: left;
+        width: 100%;
+    }
+
+    #sect2 .desc h2 {
+        font-size: 30px;
+    }
+
+ /* #sect3 -------------------------------------------------------------------- */
+    #sect3 article .mySwiper{
+        display: none;
+    }
+
+    #sect3 .right_box h1{
+        opacity: 0;
+    }
+
+
+    #sect3 article .btn_box{
+        width: 100%;
+        position: absolute;
+        bottom: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: .5s linear;
+        transition-delay: .4s;
+        opacity: 0;
+    }
+
+    #sect3 figure{
+        z-index: -1;
+    }
+
+ /* #sect5 -------------------------------------------------------------------- */
+    .wd {
+        text-align: center;
+    }
+
+    .flexBox {
+        display: block;
+    }
+
+    .sect5title h2{
+        font-size: 30px; margin-bottom: 50px;
+    }
+
+    #sect5 .btn {
+        display: none;
+    }
+
+    p.name {
+        font-size: 22px;
+    }
+
+    #sect5 .swiper-slide {
+        margin: 0 280px;
+    }
+ /* #sect6 -------------------------------------------------------------------- */
+h2 {
+    font-size: 32px;
+    text-align: center;
+}
+
+p.name {
+    font-size: 22px;
+    text-align: center;
+}
+
+
+#sect6 .inner {
+    width: 100%;
+}
+
+#sect6 .dim {
+    text-align: left;
+}
+
+#sect6 ul {
+    display: block;
+    grid-template-rows: auto;
+}
+
+#sect6 .inner h2 {
+    font-size: 30px;
+}
+
+#sect6 .soje {
+    font-size: 18px;
+    margin-bottom: -2px;
+}
+
+#sect6 .deje {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#sect6 .like {
+    font-size: 16px;
+}
+
+#sect6 .like span {
+    display: inline-block;
+    width: 17px;
+    height: 13px;
+    margin-right: 5px;
+    background: url(../img/sect6_heart.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+ /* #sect7 -------------------------------------------------------------------- */
+    /* #sect7 {
+        margin-top: 150px;
+    } */
+ 
+     #sect7 .inner h2 {
+        font-size: 30px;
+    }
+
+    #sect7 .product h6 {
+        font-size: 14x;
+    }
+
+    #sect7 .product h4 {
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+    }
+
+    #sect7 .product p {
+        font-size: 18px;
+    }
+
+    #sect7 .btn {
+        position: relative;
+        width: 100%;
+        height: 70px;
+        margin: auto;
+        border: 1px solid #F9B748;
+        color: #F9B748;
+        font-size: 18px;
+    }
+
+    #sect7 .btn p {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #sect7 .btn span {
+        display: none;
+    }
+
+
+ /* #sect8 -------------------------------------------------------------------- */
+
+
+    #sect8 .inner {
+        width: 90%;
+        margin: auto;
+    }
+
+    #sect8 .name {
+        font-size: 22px;
+    }
+
+    #sect8 h2 {
+        font-size: 30px;
+    }
+
+    #sect8 h3 {
+        font-size: 22px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #sect8 h4 {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    #sect8 .name,
+    h2,
+    .right {
+        text-align: center;
+    }
+
+    #sect8 .more {
+        display: none;
+    }
+
+    #sect8 .movie {
+        width: 100%;
+        height: 371px;
+    }
+
+    #sect8 .movie::before {
+        width: 60px;
+        height: 57px;
+
+    }
+
+    #sect8 .news {
+        margin-top: 100px;
+    }
+
+    #sect8 .mobileMore {
+        display: block;
+        margin-top: 50px;
+        font-size: 18px;
+    }
+
+    #sect8 .mobileMore a {
+        display: block;
+        border: 1px solid #F9B748;
+        padding: 20px;
+        color: #F9B748;
+        text-align: center;
+    }
+
+    #sect8 .news.wd ul li {
+        text-align: left;
+    }
+
+    .topbtn{
+        position: relative; width: 100%; margin: auto; 
+    }
+    .toptop{top: 10px; }
+
+
+/* footer ---------------------------------------------------------------------- */
+
+    footer .inner {
+        width: 90%;
+        margin: auto;
+    }
+
+    footer .footNav {
+        flex-wrap: wrap;
+    }
+
+    footer .footNav li.lv1 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    footer .footNav ul.lv2 {
+        display: none;
+    }
+
+    footer .foot {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    footer h3 {
+        width: 100%;
+        text-align: center;
+        order: 2
+    }
+
+    footer h3 img {
+        width: 100%;
+    }
+
+    footer .foot .copy {
+        text-align: center;
+    }
+
+    footer .foot .copy p {
+        width: 90%;
+        margin: 10px auto;
+        color: #8A9098;
+    }
+
+    footer .foot .info {
+        margin: auto;
+        width: 70%;
+        order: 1;
+    }
+
+    footer .sns {
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+}
+/*--------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- */
+/* 태블릿 */
+/*--------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- */
+@media screen and (min-width:768px) {
+ /* #sect1 -------------------------------------------------------------------- */
+      #sect1 .logo{
+        display: block;
+        margin-left: -90px;
+        margin-top: -15px;
+    }
+
+    .menubar{
+        display: none;
+    }
+    #sect1 nav{
+        width: 77%;
+        left: 50%;
+        transform: translate(-50%);
+        padding: 0 0;
+    }
+    
+    #sect1 nav ul li{
+        display: block;
+    }
+    #sect1 nav ul li a{
+        color: white;
+        font-size: 14px;
+    }
+
+    #sect1 .top_btns{
+        cursor: pointer;
+        width: 77%;
+        height: 57px;
+        position: absolute;
+        z-index: 5;
+        left: 50%;
+        transform: translate(-50%);
+        bottom: 100px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #sect1 .mySwiper2 .swiper-slide .desc{
+        width: 77%;
+        left: 50%;
+        transform: translate(-50%);
+        position: absolute;
+        bottom: 102px;
+        transform: translate(-50%);
+    }
+
+    #sect1 .desc .p1{
+        font-size: 16px;
+        color: #999999;
+    }
+    
+    #sect1 .desc h1{
+        font-size: 36px;
+        color: white;
+        margin-top: 15px;
+        white-space: nowrap;
+    }
+
+    #sect1 .desc h1 br:nth-child(2){
+        display: none;
+    }
+
+    
+    #sect1 .desc .p3{
+        font-size: 16px;
+        color: white;
+        margin-top: 15px;
+    }
+    
+    #sect1 .desc .more{
+        width: 229px;
+        height: 61px;
+        border-radius: 30px;
+        border: 1px solid rgb(255, 255, 255);
+        background: none;
+    }
+    
+    #sect1 .desc .more a{
+        color: white;
+        font-size: 24px;
+    }
+    
+    #sect1 .desc .btn{
+        width: 161;
+        height: 43px;
+        border: none;
+        background: none;
+    }
+
+    #sect1 .desc .btn a{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    #sect1 .desc .btn a img{
+        width: 100%;
+    }
+    
+    #sect1 .btn_box{
+        margin-top: 50px;
+        display: flex;
+    }
+    
+    #sect1 .btn_box button{
+        margin-right: 15px;
+    }
+
+ /* #sect2 -------------------------------------------------------------------- */
+    .inner {
+        width: 80%
+    }
+
+    #sect2 p.intro2 {
+        width: 100%;
+    }
+
+    #sect2 .desc h2 {
+        font-size: 32px;
+    }
+ /* #sect3 -------------------------------------------------------------------- */
+    #sect3 article {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        border-radius: 0%;
+    }
+
+    #sect3 article .inner .left_box,
+    #sect3 article .inner .right_box {
+        width: 100%;
+    }
+
+    #sect3 article .inner {
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #sect3 article .left_box .tit_box p.name {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.659);
+    }
+
+    #sect3 article .left_box .tit_box h3 {
+        font-size: 26px;
+        color: rgba(255, 255, 255, 0.644);
+    }
+
+    #sect3 article .btn_box h2 {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 600;
+        font-size: 40px;
+    }
+
+    #sect3 article .btn_box p {
+        font-size: 18px;
+    }
+
+    #sect3 article .btn_box p.jpan {
+        font-size: 16px;
+    }
+
+    #sect3 .mySwiper {
+        width: 100%;
+        height: 25%;
+        position: absolute;
+        bottom: 0px;
+        opacity: 0;
+        transition: .5s;
+        transition-delay: .7s;
+    }
+
+    #sect3 article.on .mySwiper {
+        bottom: 200px;
+        opacity: 1;
+        z-index: 7;
+    }
+
+    #sect3 .swiper-slide {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sect3 .swiper-slide img {
+        width: 100%;
+        height: 60%;
+        display: block;
+        object-fit: cover;
+    }
+
+    #sect3 span.pointer {
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        left: 0;
+        top: -5px;
+    }
+
+    #sect3 .tab_menu {
+        width: 100%;
+        border-top: 1px solid rgb(255, 255, 255);
+        position: absolute;
+        left: 50%;
+        bottom: 15%;
+        transform: translate(-50%);
+    }
+
+    #sect3 .tab_menu .tab_inner {
+        width: 100%;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    #sect3 .tab_menu .tab_inner a {
+        color: white;
+        background: none;
+        font-size: 16px;
+        margin: 0px 15px;
+        position: relative;
+    }
+
+    #sect3 .tab_menu .tab_inner a span {
+        display: inline-block;
+    }
+
+    #sect3 .tab_menu .tab_inner a p {
+        display: block;
+    }
+
+    #sect3 article.on .right_box figure {
+        opacity: 1;
+        width: 500px;
+    }
+
+    #sect3 .inner figure img {
+        width: 100%;
+    }
+
+    #sect3 #art1 .inner figure {
+        top: 40%;
+        left: 60%;
+    }
+
+    #sect3 #art2 .inner figure {
+        top: 40%;
+        left: 40%;
+    }
+
+    #sect3 #art3 .inner figure {
+        top: 38%;
+        left: 38%;
+    }
+
+    #sect3 #art4 .inner figure {
+        top: 40%;
+        left: 23%;
+    }
+
+    #sect3 #art5 .inner figure {
+        top: 35%;
+        left: 25%;
+    }
+
+    #sect3 #art6 .inner figure {
+        top: 40%;
+        left: 38%;
+    }
+
+    #sect3 #art7 .inner figure {
+        top: 40%;
+        left: 20%;
+    }
+
+    #sect3 #art8 .inner figure {
+        top: 35%;
+        left: 35%;
+    }
+
+    #sect3 #art1 .inner figure img {
+        width: 80%;
+    }
+
+
+    #sect3 #art2 .inner figure img {
+        width: 120%;
+    }
+
+    #sect3 #art3 .inner figure img {
+        width: 150%;
+    }
+
+
+    #sect3 #art4 .inner figure img {
+        width: 150%;
+    }
+
+    #sect3 #art5 .inner figure img {
+        width: 180%;
+    }
+
+    #sect3 #art6 .inner figure img {
+        width: 110%;
+    }
+
+    #sect3 #art7 .inner figure img {
+        width: 170%;
+    }
+
+    #sect3 #art8 .inner figure img {
+        width: 140%;
+    }
+
+    #sect3 article .inner .left_box .tit_box {
+        position: absolute;
+        width: 100%;
+        left: 17%;
+        top: 0px;
+        transition: .5s;
+        opacity: 0;
+    }
+
+    #sect3 article.on .inner .left_box .tit_box {
+        top: 80px;
+        transform: translate(0);
+        opacity: 1;
+    }
+
+    #sect3 article .btn_box {
+        position: absolute;
+        width: 100%;
+        bottom: 30%;
+        left: 67%;
+        transition: .5s linear;
+        transition-delay: .4s;
+        opacity: 0;
+    }
+
+    #sect3 article.on .btn_box {
+        bottom: 49%;
+        opacity: 1;
+    }
+
+    #sect3 .left_box button {
+        width: 120px;
+        height: 40px;
+    }
+
+    #sect3 .left_box button a {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+
+    #sect3 .right_box h1 {
+        font-size: 180px;
+        position: absolute;
+        top: -200px;
+        left: 20px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.316);
+        opacity: 0;
+        transition: 1s;
+        transition-delay: 1s;
+    }
+
+    #sect3 article.on .right_box h1 {
+        top: -0px;
+        opacity: 1;
+    }
+
+    #sect4 article{
+        display: flex;
+        width: 100%;
+    }
+
+    #sect4 article #senbg,
+    #sect4 article #howlbg,
+    #sect4 article #ponyobg{
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    #sect4 article #senbg,
+    #sect4 article #howlbg,
+    #sect4 article #ponyobg,
+    #sect4 article .txt{
+        width: 50%;
+    }
+
+    #sect4 .howl{
+        flex-direction: row-reverse;
+    }
+
+    #sect4 article .leftinner .desc1,
+    #sect4 article .rightinner .desc1{
+        padding: 66px 0px 66px 66px;
+        max-width: 80%;
+    }
+
+    #sect4 article .leftinner .desc2,
+    #sect4 article .rightinner .desc2{
+        padding: 50px 0px 50px 66px;
+        max-width: 80%;
+        display: block;
+    }
+
+    #sect4 article .rightinner{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    #sect4 article .rightinner .desc1,
+    #sect4 article .rightinner .desc2{
+        padding: 50px 108px 50px 0px;
+    }
+
+    #sect4 article .leftinner .desc3,
+    #sect4 article .rightinner .desc3{
+        padding: 100px 0 0 0;
+        display: flex;
+    }
+
+    #sect4 article .desc1 h2{
+        font-size: 24px;
+        color: #000000;
+    }
+
+    #sect4 article .desc1 h3{
+        font-size: 14px;
+        color: #999999;
+    }
+
+    #sect4 article .desc1 p.name{
+        font-size: 26px;
+        color: #F9B748;
+    }
+    
+    
+    #sect4 article .desc1 ul{
+        padding: 23px 0;
+        display: flex;
+    }
+    
+    #sect4 article .desc1 ul li{
+        font-size: 14px;
+        padding-right: 5px;
+    }
+    
+    #sect4 article .desc1 ul li span{
+        color: #F9B748;
+    }
+    
+    #sect4 article .desc1 p{
+        font-size: 14px;
+        color: #999;
+    }
+
+    #sect4 article .desc2 ul{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #sect4 article .desc2 ul li img{
+        width: 60px;
+        height: 60px;
+    }
+
+    #sect4 article .desc2 .talk p{
+        font-size: 14px;
+    }
+ /* #sect5 -------------------------------------------------------------------- */
+    #sect5 p.name{
+        color: #F9B748;
+    }
+
+    #sect5 .wd {
+        width: 80%;
+        margin: 0 auto 50px;
+    }
+    #sect5{
+        max-width: 1920px;
+        margin: auto;
+    }
+    .sect5title h2 {
+        font-size: 32px;
+    }
+
+    #sect5 .swiper-slide {
+        margin: 0 220px;
+    }
+
+ /* #sect6 -------------------------------------------------------------------- */
+
+    #sect6 .inner {
+        width: 80%;
+        margin: auto;
+    }
+
+
+    #sect6 .soje {
+        font-size: 1.5vw;
+        margin-bottom: -2px;
+    }
+
+    #sect6 .deje {
+        font-size: 2vw;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    #sect6 .like {
+        font-size: 20px;
+    }
+
+    #sect6 .like span {
+        display: inline-block;
+        width: 18px;
+        height: 16px;
+        margin-right: 5px;
+        background: url(../img/sect6_heart.png) no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+ /* #sect7 -------------------------------------------------------------------- */
+    p.name {
+        font-size: 22px;
+    }
+/* 
+    #sect7{
+        margin: 150px 0 120px 0;
+    } */
+
+    #sect7 .inner>h2 {
+        font-size: 32px;
+    }
+
+    #sect7 .btn {
+        right: 0;
+        top: 40px;
+        border: 1px solid #999;
+        border-radius: 20px;
+        color: #999;
+        width: 110px;
+        height: 40px;
+        padding-left: 20px;
+    }
+
+    #sect7 .product li{
+        width: 100%;}
+
+    #sect7 .product li img{
+        width: 200px;
+    }
+
+ /* #sect8 -------------------------------------------------------------------- */
+    #sect8 .inner {
+        width: 80%;
+        margin: auto;
+    }
+
+    #sect8 .right {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #sect8 .movie,
+    ul {
+        margin-top: 30px;
+    }
+
+    #sect8 .news {
+        margin-top: 100px;
+    }
+
+    #sect8 .wd {
+        width: 100%;
+    }
+
+    #sect8 .movie {
+        width: 100%;
+        height: 571px;
+    }
+
+    .name {
+        font-size: 22px;
+        color: #F9B748;
+    }
+
+    #sect8 h2 {
+        font-size: 32px;
+    }
+
+    #sect8 h3 {
+        font-size: 22px;
+    }
+
+    #sect8 h4 {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    #sect8 .date,
+    .view {
+        font-size: 16px;
+    }
+
+    #sect8 .more a {
+        font-size: 16px;
+        display: block;
+        border: 1px solid #E4E4E4;
+        border-radius: 50px;
+        color: #999999;
+        padding: 6px 15px;
+    }
+
+    #sect8 .movie::before {
+        width: 60px;
+        height: 57px;
+    }
+/* ---footer---------------------------------------------------------------------- */
+    footer .inner {
+        width: 80%;
+        margin: auto;
+    }
+
+    footer .lv1 {
+        width: 24%;
+        text-align: center;
+    }
+
+    footer .footNav .lv1 a {
+        font-size: 18px;
+        letter-spacing: -2px;
+    }
+
+    .footNav ul.lv2 a {
+        font-size: 16px;
+    }
+
+    .foot h3 {
+        width: 40%;
+    }
+
+    .foot h3 img {
+        width: 100%;
+    }
+
+    .foot .info {
+        width: 60%;
+    }
+
+    .foot .info .copy p {
+        width: 320px;
+    }
+
+    footer .lv2 li {
+        padding-bottom: 10px;
+    }
+}
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* 데스크탑 */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+@media screen and (min-width:1288px) {
+    .inner {
+        width: 1200px
+    }
+
+    p.name {
+        font-size: 26px;
+        color: #F9B748;
+    }
+/* #sect1 -------------------------------------------------------------------- */
+      #sect1 nav{
+        max-width: 1200px;
+        width: 62.5%;
+    }
+
+    #sect1 .mySwiper2 .swiper-slide .desc{
+        max-width: 1200px;
+        width: 62.5%;
+        bottom: 102px;
+        transform: translate(-50%);
+    }
+
+    #sect1 .top_btns{
+        max-width: 1200px;
+        width: 62.5%;
+        height: 57px;
+        position: absolute;
+        z-index: 5;
+        bottom: 100px;
+    }
+
+    #sect1 .desc h1 br{
+        display: none;
+    }
+
+/* #sect2 -------------------------------------------------------------------- */
+    #sect2 .inner figure{
+        position: static;
+        width: 50%;
+    }
+    #sect2 .inner figure img{
+        width: 100%; 
+        height: auto;
+    }
+
+    #sect2 p.intro{
+        font-size: 24px;
+    }
+
+    #sect2 p.intro2{
+        width: 700px;
+    }
+
+    #sect2 .desc h2 {
+        font-size: 36px;
+    }
+
+    
+/* #sect3 -------------------------------------------------------------------- */
+    #sect3{
+        height: 100vh;
+    }
+
+    #sect3 article .inner .left_box .tit_box{
+        position: absolute;
+        width: 100%;
+        left: 7%;
+        top: 80px;
+        transition: .5s;
+        opacity: 0;
+    }
+    
+    #sect3 article.on .inner .left_box .tit_box{
+        top: 100px;
+        opacity: 1;
+    }
+
+    #sect3 article .btn_box{
+        position: absolute;
+        bottom: 30%;
+        left: 56%;
+        transition: .5s linear;
+        transition-delay: .4s;
+        opacity: 0;
+    }
+    
+    #sect3 article.on .btn_box{
+        bottom: 40%;
+        opacity: 1;
+        z-index: 12;
+    }
+
+    #sect3 .right_box h1{
+        font-size: 230px;
+        position: absolute;
+        top: -200px;
+        left: -80px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.316);
+        opacity: 0;
+        transition: 1s;
+        transition-delay: 1s;
+    }
+    
+    #sect3 article.on .right_box h1{
+        top: -10px;
+        opacity: 1;
+    }
+    
+    #sect3 article.on .right_box figure{
+        opacity: 1;
+    }
+    
+    #sect3 .inner figure img{
+        width: 100%;
+    }
+
+    #sect3 #art1 .inner figure{
+        top: 50%;
+        left: 40%;
+    }
+    #sect3 .left_box button a{
+        font-size: 22px;
+    }
+    #sect3 #art2 .inner figure{
+        top: 42%;
+    }
+    
+    #sect3 #art3 .inner figure{
+        top: 42%;
+        left: 25%;
+    }
+    
+    #sect3 #art4 .inner figure{
+        top: 45%;
+        left: 20%;
+    }
+    
+    #sect3 #art5 .inner figure{
+        top: 38%;
+        left: 30%;
+    }
+
+    #sect3 #art6 .inner figure{
+        top:35%;
+        left: 35%;
+    }
+    
+    #sect3 #art7 .inner figure{
+        top: 43%;
+        left: 5%;
+    }
+    
+    #sect3 #art8 .inner figure{
+        top: 35%;
+        left: 25%;
+    }
+
+    #sect3 #art1 .inner figure img{
+        width: 100%;
+    }
+
+    #sect3 #art2 .inner figure img{
+        width: 150%;
+    }
+    
+    #sect3 #art3 .inner figure img{
+        width: 170%;
+    }
+    
+    
+    #sect3 #art4 .inner figure img{
+        width: 150%;
+    }
+    
+    #sect3 #art5 .inner figure img{
+        width: 200%;
+    }
+
+    #sect3 #art6 .inner figure img{
+        width: 120%;
+    }
+    
+    #sect3 #art7 .inner figure img{
+        width: 200%;
+    }
+    
+    #sect3 #art8 .inner figure img{
+        width: 180%;
+    }
+    #sect3 article .left_box .tit_box p.name{
+        font-size: 26px;
+    }
+    
+    #sect3 article .left_box .tit_box h3{
+        font-size: 36px;
+    }
+    
+    #sect3 article .btn_box h2{
+        font-size: 50px;
+    }
+    
+    #sect3 article .btn_box p{
+        font-size: 30px;
+    }
+    
+    #sect3 article .btn_box p.jpan{
+        font-size: 24px;
+    }
+
+    #sect3 .left_box button{
+        width: 167px;
+        height: 55px;
+    }
+    #sect3 .left_box button a{
+        padding-top: 0px;
+    }
+    #sect3 .tab_menu{
+        bottom: 10%;
+    }
+
+    #sect3 .tab_menu .tab_inner{
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    #sect3 .mySwiper{
+        width: 100%;
+        height: 24%;
+        position: absolute;
+        bottom: -0px;
+        opacity: 0;
+        transition: .5s;
+        transition-delay: .7s;
+    }
+    
+    #sect3 article.on .mySwiper{
+        bottom: 150px;
+        opacity: 1;
+        z-index: 7;
+    }
+
+    #sect4 article .leftinner .desc1{
+        padding: 66px 0px 66px 66px;
+        max-width: 600px;
+    }
+
+    #sect4 article .leftinner .desc2{
+        padding: 100px 0px 100px 66px;
+        max-width: 600px;
+        display: block;
+    }
+
+    #sect4 article .leftinner .desc3{
+        padding: 100px 0 0 0;
+        display: flex;
+    }
+
+    #sect4 article .rightinner .desc1{
+        padding: 66px 66px 66px 0px;
+        max-width: 600px;
+    }
+
+    #sect4 article .rightinner .desc2{
+        width: 100%;
+        padding: 100px 66px 100px 0px;
+        max-width: 600px;
+        display: block;
+    }
+
+    #sect4 article .rightinner .desc3{
+        padding: 100px 0 0 0;
+        display: flex;
+    }
+
+    #sect4 article p.name{
+        font-size: 26px;
+    }
+
+    #sect4 article .desc1 h2{
+        font-size: 36px;
+    }
+    
+
+    #sect4 article .desc1 h3{
+        font-size: 20px;
+        color: #999999;
+    }
+    
+    #sect4 article .desc1 ul{
+        padding: 79px 0 0 0;
+        display: flex;
+    }
+    
+    #sect4 article .desc1 ul li{
+        font-size: 18px;
+        padding-right: 17px;
+    }
+    
+    #sect4 article .desc1 ul li span{
+        color: #F9B748;
+    }
+    
+    #sect4 article .desc1 p{
+        font-size: 18px;
+        color: #999;
+        padding-top: 28px;
+    }
+
+    #sect4 article .desc2 ul{
+        justify-content: space-between;
+        padding: 30px 0;
+    }
+
+    #sect4 article .desc2 ul li img{
+        width: 103px;
+        height: 103px;
+    }
+
+    #sect4 article .desc2 .talk p{
+        padding-top: 28px;
+        font-size: 18px;
+    }
+
+/* #sect5 -------------------------------------------------------------------- */
+
+    #sect5 .wd{
+        width:1200px;
+    }
+
+    #sect5 .swiper-slide {
+        margin: 0 130px;
+    }
+
+/* #sect6 -------------------------------------------------------------------- */
+
+    #sect6 .inner {
+        width: 1200px;
+        margin: auto;
+    }
+
+/* #sect7 -------------------------------------------------------------------- */
+
+    #sect7 .product {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #sect7 .product li:nth-child(n+3) a img {
+        margin-top: 0px;
+    }
+
+    #sect7 .product li{
+        padding: 0;
+    }
+
+/* #sect8 -------------------------------------------------------------------- */
+
+
+    #sect8 .inner {
+        width: 1200px;
+        display: flex;
+        margin: auto;
+        justify-content: space-between;
+    }
+
+    #sect8 .name {
+        font-size: 26px;
+       
+    }
+
+    #sect8 h2 {
+        font-size: 36px;
+    }
+
+    #sect8 .wd {
+        width: 45%;
+    }
+
+    #sect8 .movie {
+        width: 100%;
+        height: 75%;
+    }
+
+    #sect8 .news {
+        margin-top: 0px;
+    }
+
+    #sect8 .more a {
+        font-size: 20px;
+    }
+
+/* footer -------------------------------------------------------------------- */
+    footer .inner {
+        width: 1200px;
+        margin: auto;
+    }
+
+    footer .lv1 {
+        width: 24%;
+        text-align: left;
+    }
+
+    .footNav li.lv1 a {
+        font-size: 24px;
+    }
+
+    .footNav ul.lv2 a {
+        font-size: 18px;
+    }
+
+    .foot .info {
+        width: 40%;
+    }
+
+    .foot .info .copy p {
+        width: auto;
+    }
+}

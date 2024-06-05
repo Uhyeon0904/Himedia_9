@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 리액트 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 바벨 -->
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 리덕스 -->
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+    <script src="https://unpkg.com/react-redux@8.1.3/dist/react-redux.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { createStore, combineReducers } = Redux;
+        const { Provider, useSelector, useDispatch } = ReactRedux;
+
+        /* 관리할 State 초기 값 설정 */
+        const countInitState = {
+            currentCount : 0
+        };
+
+        const activitionInitState = {
+            isActivity : false
+        };
+
+        const userInitState = {
+            name: '',
+            email: '',
+            phone: ''
+        };
+
+        const rootReducer = combineReducers({
+            countReducer(state = countInitState, {type, payload}) {
+                switch(type) {
+                    /* payload.incrementValue: 받아온 값 만큼 증가를 시킬거다. */
+                    case 'INCREMENT': 
+                        return {currentCount: state.currentCount + payload.incrementValue}
+                    case 'DECREMENT': 
+                    return {currentCount: state.currentCount - payload.decrementValue}
+                    default : 
+                        return state;
+                }
+            },
+            activationReducer : (state = activitionInitState, {type}) => {
+                switch (type) {
+                    case 'TOGGLE':
+                        return {isActivity: !state.isActivity}
+                    default:
+                        return state
+                }
+            },
+            userReducer: (state = userInitState, {type, payload}) => {
+                switch(type) {
+                    case 'INPUT':
+                        return {...state, [payload.name]: payload.value}
+                    default:
+                        return state;
+                }
+            }
+        });
+
+        /* 세 개의 reducer 함수를 combie한 rootReducer를 전달하며 store 객체 생성 */
+        const store = createStore(
+            rootReducer,
+            /* 크롬 확장 프로그램 redux devtool 적용 */
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        );
+
+        function App() {
+
+            /* useSelector hook을 통해 Store의 state를 사용할 수 있다.
+            * 반드시 인자로 state를 매개변수로 하는 함수를 콜백으로 전달한다. */
+            const {currentCount} = useSelector(state => state.countReducer);
+            const {isActivity} = useSelector(state => state.activationReducer);
+            const {name, email, phone} = useSelector(state => state.userReducer);
+
+            /* useDispatch hook을 통해 dispatch 함수를 반환 받는다. */
+            const dispatch = useDispatch();
+
+            const increaseCount = () => {
+                dispatch({
+                    type: 'INCREMENT',
+                    payload: {
+                        incrementValue: 1
+                    }
+                })
+            };
+
+            const decreaseCount = () => {
+                dispatch({
+                    type: 'DECREMENT',
+                    payload: {
+                        decrementValue: 1
+                    }
+                })
+            };
+
+            const toggleActivation = () => {
+                dispatch({type: 'TOGGLE'});
+            };
+
+            const onChangeHandler = (e) => {
+                dispatch({
+                    type: 'INPUT',
+                    payload: {
+                        name: e.target.name,
+                        value: e.target.value
+                    }
+                })
+            };
+
+            return(
+                <>
+                    <h1>Count: {currentCount}</h1>
+                    <button onClick={increaseCount}>+1</button>
+                    <button onClick={decreaseCount}>-1</button>
+                    <h1>isActivity: {isActivity.toString()}</h1>
+                    <button onClick={toggleActivation}>toggle activation</button>
+                    <h1>input control</h1>
+                    <label>name: </label>
+                    <input type="text" name="name" value={name} onChange={onChangeHandler}/>
+                    <label>email: </label>
+                    <input type="text" name="email" value={email} onChange={onChangeHandler}/>
+                    <label>phone: </label>
+                    <input type="text" name="phone" value={phone} onChange={onChangeHandler}/>
+                </>
+            )
+        }
+
+        /* Provider: App이 store를 구독하고 있을 수 있도록 기능을 처리 
+        * 컴포넌트로 store를 props로 전달하면 하위 컴포넌트는 store를 자동으로 구동하게 된다. 
+        * 즉, state가 변경되면 렌더링이 다시 일어난다. */
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        );
+    </script>
+</body>
+<!-- 리덕스 상태관리
+상태관리 = store
+state를 관리 -->
+</html>

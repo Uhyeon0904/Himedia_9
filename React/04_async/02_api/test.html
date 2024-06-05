@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { useState, useEffect } = React;
+
+        function SearchBox({ onSearch }) {
+            const [form, setForm] = useState('');
+
+            const onChangeHandler = (e) => {
+                setForm(e.target.value);
+            }
+
+            const onClickHandler = () => {
+                onSearch(form);
+            }
+
+            return (
+                <>
+                    <input
+                        type="text"
+                        name="emojiName"
+                        value={form}
+                        onChange={onChangeHandler}
+                        placeholder="이모지 이름을 입력하세요"
+                    />
+                    <button onClick={onClickHandler}>검색</button>
+                </>
+            );
+        }
+
+        function ImageBox({ emojiUrl }) {
+            if (!emojiUrl) {
+                return null;
+            }
+
+            return (
+                <img src={emojiUrl} alt="emoji" />
+            );
+        }
+
+        function App() {
+            const [emojiData, setEmojiData] = useState({});
+            const [emojiUrl, setEmojiUrl] = useState('');
+
+            useEffect(() => {
+                axios.get('https://api.github.com/emojis')
+                    .then(res => {
+                        setEmojiData(res.data);
+                    });
+            }, []);
+
+            const handleSearch = (emojiName) => {
+                if (emojiData[emojiName]) {
+                    setEmojiUrl(emojiData[emojiName]);
+                } else {
+                    setEmojiUrl('');
+                }
+            }
+
+            return (
+                <>
+                    <SearchBox onSearch={handleSearch} />
+                    <br/>
+                    <ImageBox emojiUrl={emojiUrl} />
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>

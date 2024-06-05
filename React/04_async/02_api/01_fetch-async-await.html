@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <script>
+        /* fetch
+        * const promise = fetch(url, [options])
+        * 첫 번째 인자: 주소
+        * 두 번쨰 인자: ? */
+       
+        async function callAPI() {
+            /* url 넣어주기 */
+            const promise = fetch('https://jsonplaceholder.typicode.com/users');
+            console.log(promise);
+            /* undefiend: 접근 불가 */
+            console.log(promise['[[PromiseResult]]']);
+
+            const res = await fetch('https://jsonplaceholder.typicode.com/users');
+            console.log(res);
+
+            console.log(`본문 사용 여부: ${res.bodyUse}`)
+
+            /* res body를 문자열 형태로 반환 */
+            // const resText = await res.text();
+            // console.log(resText)
+
+            /* res body를 자바스크립트 객체 형태로 반환 */
+            const resJson = await res.json();
+            console.log(resJson);
+            
+            console.log(`본문 사용 여부: ${res.bodyUse}`)
+        };
+
+        callAPI();
+        
+    </script>
+</body>
+</html>

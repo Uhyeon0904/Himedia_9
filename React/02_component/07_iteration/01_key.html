@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Items({names}) {
+            return (
+                /* key: PK 설정 */
+                <ul>
+                    {names.map((name, index) => <li key={index}>{name}</li>)}
+                </ul>
+            )
+        }
+
+        const names = ['홍길동', '유관순', '윤봉길', '이순신', '임꺽정'];
+        ReactDOM.createRoot(document.getElementById('root')).render(<Items names={names}/>);       
+    </script>
+    <!-- 
+        리액트에서 key는 컴포넌트 배열을 렌더링 했을 떄
+        어떤원소에서 변동이 있는지를 알아내기 위한 식별자 역할을 한다.
+        key는 일반적으로 db에서 조회한 데이터인 경우 pk 컬럼 값을 key로 설정하면 된다.     
+    -->
+</body>
+</html>

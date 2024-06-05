@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class Counter extends React.Component {
+            /* 생성자 함수 없이 클래스의 속성으로 state를 추가하는 것도 가능하다.
+            * 이 때 this.은 사용 불가능하다(this.은 생성자 혹은 함수 내에서만 사용 가능) */
+            state = {
+                number: 0
+            };
+
+            render() {
+                // const number = this.state.number;
+                const {number} = this.state;
+                return (
+                    <>
+                        <h1 style={number < 0 ? {color: 'red'} : {color: 'blue'}}>Counter: {number}</h1>
+                        <button onClick={() => this.setState({number: number - 1})}>-1</button>
+                        <button onClick={() => {
+                            console.log(`number: ${this.state.number}`);
+                            /* prevState: ? 누적 연산 할 경우 사용
+                            * 첫 번째 방법도 있지만,
+                            * 두 번째 방법은 좀 더 간결하게 작성 가능 */
+                            this.setState((prevState, props) => {
+                                return {
+                                    number: prevState.number + 1
+                                }
+                            });
+                            
+                            this.setState(prevState => ({number: prevState.number + 1}));
+
+                        }}>+1</button>
+                    </>
+                )
+            }
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
+    </script>
+</body>
+</html>

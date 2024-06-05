@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const user = {
+            name: 'Panada',
+            phone: '010-1234-5678'
+        };
+
+        /* 1. 최상위 엘리먼트가 두 개 이상이면 에러가 발생한다.(하나의 돔 트리만 생성해야 한다.) */
+        // const element = {
+        //     <h1>Hello</h1>
+        //     <h3>phone</h3>
+        // };
+
+        /* 2. <div>로 감싸서 하나의 돔 트리를 생성할 수 있도록 한다. */
+        // const element = (
+        //     <div>
+        //         <h1>Hello, {user.name}</h1>
+        //         <h1>phone: {user.phone}</h1>
+        //     </div>
+        // );
+
+        /* 3. <React.Fragment>로 감싸서 형식상의 돔 트리상 상위 엘리먼트를 만들어 준다. */
+        // const element = (
+        //     <React.Fragment>
+        //         <h1>Hello, {user.name}</h1>
+        //         <h1>phone: {user.phone}</h1>
+        //     </React.Fragment>
+        // );
+
+        /* 4. React 라이브러리로부터 Fragment 객체만 구조분해 할당을 해주면 React.을 생략할 수 있다. */
+            // const {Fragment} = React;
+            // const element = (
+            //     <Fragment>
+            //         <h1>Hello, {user.name}</h1>
+            //         <h1>phone: {user.phone}</h1>
+            //     </Fragment>
+            // );
+
+        /* 5. React.Fragment의 축약 문법인 <></>로 감싸서 사용할 수 있다.(Babel 17 이상부터 지원) */
+        const {Fragment} = React;
+        const element = (
+            <>
+                <h1>Hello, {user.name}</h1>
+                <h1>phone: {user.phone}</h1>
+            </>
+        );
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+    </script>
+</body>
+</html>

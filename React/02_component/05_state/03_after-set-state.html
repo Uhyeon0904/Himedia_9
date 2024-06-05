@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- 
+        setState() 실행 이후 특정 작업을 처리하고 싶을 때 두 번째 인자로 콜백함수를 전달하여 처리할 수 있다.
+     -->
+    <script type="text/babel">
+        class Light extends React.Component {
+            state = {
+                isOn: false
+            };
+
+            render() {
+                /* this.state: 구조 분해 대상 */
+                const {isOn} = this.state;
+                const style = {
+                    width: 200,
+                    height: 200,
+                    backgroundColor: isOn ? 'gray' : 'black',
+                    transition: '2s'
+                };
+
+                const marginSideAuto = {
+                    margin: '5% auto'
+                };
+
+                const btnStyle = {
+                    width: 100,
+                    height: 50
+                }
+
+                return (
+                    /* 스타일 여러 개 넣기 */
+                    <>
+                        <div style={style}></div>
+                        <button style={{...marginSideAuto, ...btnStyle}} onClick={() => {
+                            this.setState(
+                                {isOn: !isOn},
+                                () => console.log(!isOn ? '불이 켜졌습니다.' : '불이 꺼졌습니다.')
+                            )
+                        }}>
+                            {isOn ? 'OFF' : 'ON'}
+                        </button>
+                    </>
+                )
+            }
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Light/>);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        /* state가 변경되는 상황을 만들고 업데이트 라이프 사이클 메서드 확인 */
+        class TimePrinter extends React.Component {
+
+            state = {
+                now: new Date().toLocaleTimeString()
+            };
+
+            /* 1. props에 있는 값을 state에 넣을 때 사용되는 메소드 */
+            static getDerivedStateFromProps(props, state) {
+
+                console.log('getDerivedStateFromProps');
+
+                /* state를 변경할 필요가 없다면 null 반환 */
+                return null;
+            };
+
+            /* 2. 컴포넌트가 리렌더링을 할 것인지 말 것인지 결정하는 메서드 */
+            shouldComponentUpdate(nextProps, nextState) {
+                console.log('shouldComponentUpdate');
+                console.log(nextProps);
+                console.log(nextState);
+
+                /* 리렌더링을 줄 때 반환 값을 true, false로 줘야한다. */
+                /* 반드시 boolean을 반환해야 하며 false를 반환할 시 업데이트 과정은 중단 된다.
+                * 해당 메서드를 정의하지 않거나 리턴 타입을 생성하지 않으면 언제나 true를 반환 한다. */
+                return true;
+            }
+
+            render() {
+
+                console.log('render');
+
+                return (
+                    <>
+                        <button onClick={() => this.setState({ now: new Date().toLocaleTimeString() })}>
+                            현재 시간 확인하기
+                        </button>
+                        <h1>{this.state.now}</h1>
+                    </>
+                );
+            };
+
+            /* 4. 컴포넌트의 변화를 실제 DOM에 반영하기 직전에 호출 되는 메서드 */
+            getSnapshotBeforeUpdate(prevProps, prevState) {
+                console.log('getSnapshotBeforeUpdate');
+
+                /* return 값으로 무언갈 보낼 수 있다. DOM을 읽을 수 있는 단계*/
+                return{
+                    message: '스냅샷 입니다.'
+                }
+            }
+
+            /* 5. 컴포넌트 업데이트 작업이 끝난 후 호출하는 메서드 */
+            componentDidUpdate(prevProps, prevState, snapshot){
+                console.log('componentDidUpdate');
+                console.log(snapshot);
+            }
+        };
+        ReactDOM.createRoot(document.getElementById('root')).render(<TimePrinter />);
+    </script>
+</body>
+
+</html>
