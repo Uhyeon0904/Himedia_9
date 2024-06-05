@@ -22,47 +22,37 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        
-        const { createStore } = Redux;
-        const { Provider, useSelector, useDispatch } = ReactRedux;
-        const {createAction, createActions, handleActions} = ReduxActions;
 
-        /* Ducks 패턴에 의하면 초기 값, 액션, 리듀서를 관련 있는 state 별로 modules 폴더 하위에 관리한다.  */
+        /* 리덕스 미들웨어
+        * dispatch에서 reducer 함수 호출
+        * dispatch(action) -> middleware -> reducer(state, action -> store 저장) 
+        * 추가적인 작업? 특정 조건에 따른 액션 무시, 수정, 로깅, 트리거 액션, 함수 호출 등
+        * 주로 사용하는 용도는 비동기 작업 처리(redux-thunk, redux-sage 등)*/
+
+        /* 액션을 출력하는 로그 기능을 가지는 간단한 미들 웨어 */
+        const consoleLoggingMiddleware = store => next => action => {
+            console.log(action);            // 액션 객체를 출력하는 콘솔 로그 기능
+            const result = next(action);    // 다음 미들웨어 또는 리듀서에게 액션을 전달
+            return result;                  // 반환하는 result는 dispatch(action)의 결과물
+        }
+        
+        /* ------------------------------- modules ------------------------------------- */
+        const {createAction, createActions, handleActions} = ReduxActions;
 
         /* 초기 값 설정 */
         const initialState = 0;
 
         /* 액션 */
-        /* 액션 타입을 상수로 선언한다. 접수사는 다른 모듈과 액션 없이 겹치지 않도록 하위 위함이다. */
         const INCREMENT = 'count/INCREASE';
         const DECREMENT = 'count/DECREASE';
 
-        /* 1. createAction 함수 사용 */
-        /* 첫 번째 인자: action type 속성
-        * 두 번째 인자: 콜백 함수 반환 값이 payload */
-       /* createAction(INCREMENT, () => {}) */
-    //    const increase = createAction(INCREMENT, (amount = 1) => ({incrementValue: amount}));
-    //    const decrease = createAction(DECREMENT, (amount = 1) => ({decrementValue: amount}));
-
-        /* 2. cerateActions 함수 사용 */
-        /* 여러 개의 액션 함수를 한 번에 생성할 수 있다.
-        * 전달하는 객체의 key 값: action type 속성
-        * 전달하는 객체의 value 값: 함수 반환 값이 payload 속성
-        * action type의 속성명에 따라 반환 되는 객체의 키 값이 설정 된다.*/
        const {count: {increase, decrease}} = createActions({
         [INCREMENT]: (amount = 1) => ({incrementValue: amount}),
         [DECREMENT]: (amount = 1) => ({decrementValue: amount})
        })
-       /* count/ABC_DEF 
-       * {count{abcDef}}*/
 
-        /* Reducer 함수 선언 */
-        /* 3. handleActions 사용 
-        * 첫 번째 인자: 객체 (key - action type, value - state, action을 전달 받아서 새로운 state를 반환하는
-        * 두 번째 인자: state의 초기 값 */
        const reducer = handleActions({
-        /* 액션에서 payload 구조 분해 할당
-        * payload에서 incremanetValue 구조 분해 할당 */
+
             [INCREMENT] : (state, {payload: {incrementValue}}) => {
                 return state + incrementValue;
             },
@@ -80,7 +70,9 @@
             }
         }
 
-        /* ------------------------- redux 분리 --------------------------------------- */
+        /* -------------------------------- ui --------------------------------------- */
+
+        const { useSelector, useDispatch } = ReactRedux;
 
         function App() {
 
@@ -106,10 +98,19 @@
             )
         }
 
+        /* -------------------------------- store --------------------------------------- */
+
+        const {provider} = ReacRedux;
+        const { createStore, applyMiddleware, compose } = Redux;
+        
         /* 리듀서 함수를 전달하며 상태 값을 관리할 스토어 생성 */
         const store = createStore(
             reducer,
-            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+            /* 미들웨어를 적용하겠다. */
+            compose(
+                applyMiddleware(consoleLoggingMiddleware),
+                window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+            )
         );
 
         /* Provider: App이 store를 구독하고 있을 수 있도록 기능을 처리 
