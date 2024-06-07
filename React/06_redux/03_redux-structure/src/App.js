@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Layout from './components/layouts/Layout';
 import Main from './pages/Main';
 import Menus from './pages/Menus'
+import MenuDetail from './pages/MenuDetail';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route index element={<Main/>}/>
             <Route path='menu'>
               <Route index element={<Menus/>}/>
+              <Route path=':id' element={<MenuDetail/>}/>
             </Route>
           </Route>
         </Routes>

@@ -16,3 +16,11 @@ export function callGetMenuListAPI() {
 * npx json-server ./db.json --port 4000 */
 
 /* API 호출을 통해 반환 받은 데이터를 Store에 저장하기 위해 다시 dispatch(action 객체) 한다, */
+
+export function callGetMenuAPI(id) {
+    return async (dispatch, getState) => {
+        const result = await request('GET',`/menu/${id}`)
+
+        console.log('getMenu result :', result)
+    }
+}
