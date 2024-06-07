@@ -1,3 +1,5 @@
+import {handleActions} from 'redux-actions'
+
 /* 메뉴 모듈 */
 /* 초기값 */
 const initialState = {};
