@@ -4,6 +4,7 @@ import Layout from './components/layouts/Layout';
 import Main from './pages/Main';
 import Menus from './pages/Menus'
 import MenuDetail from './pages/MenuDetail';
+import Review from './pages/Review';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Route index element={<Menus/>}/>
               <Route path=':id' element={<MenuDetail/>}/>
             </Route>
+            <Route path='review' element={<Review/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
