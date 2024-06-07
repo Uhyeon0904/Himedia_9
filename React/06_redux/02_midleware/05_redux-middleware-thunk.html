@@ -51,9 +51,9 @@
 
         /* Reducer */
         const reducer = handleActions({
-            [FETCH_DATA] : (state, {payload}) => {
+            [FETCH_DATA] : [(state, {payload}) => {
                 return [...payload];
-            }
+            }]
         }, initialState);
 
         /* -------------------------------- ui --------------------------------------- */

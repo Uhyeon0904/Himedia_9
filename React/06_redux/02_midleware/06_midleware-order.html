@@ -57,6 +57,7 @@
             [DECREMENT]: (amount = 1) => ({decrementValue: amount})
         })
 
+        /* 리듀서 */
         const reducer = handleActions({
             [INCREMENT] : (state, {payload: {incrementValue}}) => {
                 return state + incrementValue;
