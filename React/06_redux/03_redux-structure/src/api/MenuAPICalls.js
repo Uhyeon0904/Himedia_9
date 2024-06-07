@@ -1,4 +1,4 @@
-import { getMenulist } from '../modules/MenuModules';
+import { getMenu, getMenulist } from '../modules/MenuModules';
 import {request} from './api'
 
 export function callGetMenuListAPI() {
@@ -22,5 +22,7 @@ export function callGetMenuAPI(id) {
         const result = await request('GET',`/menu/${id}`)
 
         console.log('getMenu result :', result)
+
+        dispatch(getMenu(result));
     }
 }
