@@ -7,3 +7,4 @@ function MenuItem({menu}) {
         </div>
     )
 }
+export default MenuItem;
