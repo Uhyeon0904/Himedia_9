@@ -8,6 +8,7 @@ const initialState = {};
 /*  */
 const GET_MENULIST = 'menu/GET_MENULIST'
 const GET_MENU = 'menu/GET_MENU';
+const GET_REIVEW = 'menu/GET_REVIEW'
 
 export const { menu: {getMenulist, getMenu}} = createActions({
     [GET_MENULIST]: result => ({menulist: result}),
