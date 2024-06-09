@@ -18,6 +18,8 @@ export const { menu: {getMenulist, getMenu}, review: {getReview}} = createAction
 
 /* 리듀서 함수 */
 const menuReducer = handleActions({
+    /* callGetMenuListAPI에서 dispatch 받은 getMenulist는 = GET_MENULIST 자동 변환
+    * 인수로 받은 result(객체)는 {payload}에 적용 */
     [GET_MENULIST]: (state, {payload}) => payload,
     [GET_MENU]: (state, {payload}) => payload,
     [GET_REVIEW]: (state, {payload}) => payload

@@ -46,11 +46,22 @@
         const INCREMENT = 'count/INCREASE';
         const DECREMENT = 'count/DECREASE';
 
+        /* 액션 생성함수 */
+        // 2. 1번의 increase(5) 함수의 호출로 실행
+        // 3. increase는 key: count, value: increase가 됨
+        // 4. 액션 타입에서 선언한 const INCREMENT = 'count/INCREASE' 3번의 키, 밸류 같은 뜻
+        // 5. 액션 생성함수에서 상수 네이밍인 INCREMENT를 실행
+        // 6. increase(5) 함수는 이제 객체로 바뀜 type: INCREMENT, payload: {incrementValue: amount}의 action으로 변환 됨
         const {count: {increase, decrease}} = createActions({
             [INCREMENT]: (amount = 1) => ({incrementValue: amount}),
             [DECREMENT]: (amount = 1) => ({decrementValue: amount})
         })
 
+        /* 리듀서 함수 */
+        // 9. dispatch로 보내져온 increase의 타입은 INCREMENT이기 때문에 해당 코드 실행
+        // 10. incrementValue에는 amount로 5라는 값이 들어있음
+        // 11. 그 값을 payload의 값으로 넣음
+        // 12. 그리고 현재 state에서 + incrementValue(실제로 들어있는 값은 5)를 더함
         const reducer = handleActions({
             [INCREMENT] : (state, {payload: {incrementValue}}) => {
                 return state + incrementValue;
@@ -66,11 +77,15 @@
 
         function App() {
 
+            // 13. useSelector를 사용해서 현재 상태의 값을 변경된 상태의 값으로 변환 후 count 변수에 담음
             const count = useSelector(state => state);
             const dispatch = useDispatch();
 
             /* 함수 호출 */
             const increaseCount = () => {
+                // 1. increase(): 액션 생성함수 호출
+                // 7. 액션 생성함수에서 action으로 변환 되어서 amount는 5가 됨
+                // 8. increase는 이제 액션 타입이기 때문에 리듀서로 보내짐
                 dispatch(increase(5));
             };
 
@@ -81,6 +96,7 @@
 
             return(
                 <>
+                    {/* 14. 변경 된 값을 화면에 출력 */}
                     <h1>{`Count: ${count}`}</h1>
                     <button onClick={increaseCount}>+5</button>
                     <button onClick={decreaseCount}>-5</button>

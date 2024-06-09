@@ -3,8 +3,9 @@ import {request} from './api'
 
 export function callGetMenuListAPI() {
     return async (dispatch, getState) => {
-        const result = await request('GET', '/menu');
+        const result = await request('GET', '/menu')
         dispatch(getMenulist(result));
+        console.log('타입 확인:', result)
     }
 }
 
@@ -21,10 +22,11 @@ export function callGetMenuAPI(id) {
 }
 
 export function callgetReview() {
-    return async (dispatch) => {
+    return async (dispatch, getstate) => {
         // 문자열이 들어가는 것이 아닌 GET방식의 request url의 + /review 요청의 데이터가 담긴다.
         // result는 action 타입이 된다.
         const result = await request('GET', '/review');
         dispatch(getReview(result));
+        console.log('타입 확인:', result)
     }
 }
