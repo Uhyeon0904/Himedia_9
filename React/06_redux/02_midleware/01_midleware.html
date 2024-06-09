@@ -49,7 +49,7 @@
         /* 액션 생성함수 */
         // 2. 1번의 increase(5) 함수의 호출로 실행
         // 3. increase는 key: count, value: increase가 됨
-        // 4. 액션 타입에서 선언한 const INCREMENT = 'count/INCREASE' 3번의 키, 밸류 같은 뜻
+        // 4. 액션 타입에서 선언한 const INCREMENT = 'count/INCREASE'과 3번의 키, 밸류 매핑이 됨
         // 5. 액션 생성함수에서 상수 네이밍인 INCREMENT를 실행
         // 6. increase(5) 함수는 이제 객체로 바뀜 type: INCREMENT, payload: {incrementValue: amount}의 action으로 변환 됨
         const {count: {increase, decrease}} = createActions({
@@ -83,7 +83,7 @@
 
             /* 함수 호출 */
             const increaseCount = () => {
-                // 1. increase(): 액션 생성함수 호출
+                // 1. increase(5): 액션 생성함수 호출, 인수로 5라는 값을 가짐
                 // 7. 액션 생성함수에서 action으로 변환 되어서 amount는 5가 됨
                 // 8. increase는 이제 액션 타입이기 때문에 리듀서로 보내짐
                 dispatch(increase(5));
