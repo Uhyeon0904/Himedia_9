@@ -4,22 +4,23 @@ import {createActions, handleActions} from 'redux-actions'
 /* 초기값 */
 const initialState = {};
 
-/* 액션 */
-/*  */
+/* 액션 타입 */
 const GET_MENULIST = 'menu/GET_MENULIST'
 const GET_MENU = 'menu/GET_MENU';
-const GET_REIVEW = 'menu/GET_REVIEW'
+const GET_REVIEW = 'review/GET_REVIEW'
 
-export const { menu: {getMenulist, getMenu}} = createActions({
+/* 액션 생성함수 */
+export const { menu: {getMenulist, getMenu}, review: {getReview}} = createActions({
     [GET_MENULIST]: result => ({menulist: result}),
-    [GET_MENU]: result => ({menu: result})
+    [GET_MENU]: result => ({menu: result}),
+    [GET_REVIEW]: result => ({review: result})
 });
 
-/* 리듀서 함수 
-* handleActions: */
+/* 리듀서 함수 */
 const menuReducer = handleActions({
     [GET_MENULIST]: (state, {payload}) => payload,
-    [GET_MENU]: (state, {payload}) => payload
+    [GET_MENU]: (state, {payload}) => payload,
+    [GET_REVIEW]: (state, {payload}) => payload
 }, initialState);
 export default menuReducer;
 

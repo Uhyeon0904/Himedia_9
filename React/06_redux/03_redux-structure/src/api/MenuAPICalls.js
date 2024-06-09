@@ -1,4 +1,4 @@
-import { getMenu, getMenulist } from '../modules/MenuModules';
+import { getMenu, getMenulist, getReview } from '../modules/MenuModules';
 import {request} from './api'
 
 export function callGetMenuListAPI() {
@@ -25,6 +25,6 @@ export function callgetReview() {
         // 문자열이 들어가는 것이 아닌 GET방식의 request url의 + /review 요청의 데이터가 담긴다.
         // result는 action 타입이 된다.
         const result = await request('GET', '/review');
-        dispatch()
+        dispatch(getReview(result));
     }
 }

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { callgetReview } from "../../api/MenuAPICalls";
+import ReviewItem from "../item/ReviewItem";
 
 function ReviewList() {
 
@@ -10,9 +11,11 @@ function ReviewList() {
         dispatch(callgetReview());
     }, [])
 
+    const { reviewList } = useSelector(state => state.menuReducer)
+
     return (
         <div>
-            <h2>review's</h2>
+            {reviewList && reviewList.map(review => <ReviewItem key={review.id} review={review}/>)}
         </div>
     )
 }
