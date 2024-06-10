@@ -23,6 +23,12 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    /* jwt */
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    /* json simple */
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    /* bind = jaxb*/
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
 }
 
 tasks.named('test') {

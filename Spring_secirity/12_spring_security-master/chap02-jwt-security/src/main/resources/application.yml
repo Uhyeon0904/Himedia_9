@@ -13,5 +13,7 @@ spring:
     password: ohgiraffers
 
 jwt:
+#  key: 특수문자만 아니면 된다.
   key: asdkfjlkawdsjfw390r82309rjlkasdfja213498dlk
+#  time: 만료시간, 1000 m/s
   time: 86400000
