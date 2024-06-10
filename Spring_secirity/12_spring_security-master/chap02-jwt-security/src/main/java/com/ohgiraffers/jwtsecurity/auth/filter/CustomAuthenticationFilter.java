@@ -13,10 +13,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import java.io.IOException;
 
-public class CustomAuthenticationFilter  {
+public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter  {
+
+    public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
+        super.setAuthenticationManager(authenticationManager);
+    }
 
 
-    /**
+/**
      * description. 지정된 url 요청 시 해당 요청을 가로채서 검증 로직을 수행하는 메소드
      *
      * @param request  : HttpServletRequest
@@ -24,6 +28,14 @@ public class CustomAuthenticationFilter  {
      * @return Authentication
      * @throws AuthenticationException
      */
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        /* 토큰 생성 */
+        UsernamePasswordAuthenticationToken authenticationToken;
+
+        authRequest = getAuthRequest(request);
+        setDetails(request, authRequest);
+    }
 
 
     /**

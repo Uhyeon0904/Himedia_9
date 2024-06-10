@@ -13,7 +13,7 @@ public class JwtTokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         /* 토큰 유효성을 검증 */
-        String header = request.getHeader("Authorization");
+        String header = request.getHeader(AuthConstants.TOKEN_TYPE);
 
         /* TokenUtils.splitHeader: 유효성 검사를 할 땐 베어리어를 분리해서 토큰에 대한 정보만 가져올 수 있게 한다.
         * (클래스.메소드명) 정적 메소드로 만들겠다. */

@@ -54,7 +54,7 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(sessionCreationPolicy.STATLESS))
                 .formLogin(form -> form.disable())
                 /* customAuthoricationFilter: 로그인에 대한 url 등록,*/
-                .addFilterBefore(customAuthoricationFilter(), UsenamePasswordAuthenticationFilter.class)
+                .addFilterBefore(customAuthoricationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .httpBasic((basic -> basic.disable()));
 
         return http.build();
@@ -100,7 +100,8 @@ public class WebSecurityConfig {
      * @return BCryptPasswordEncoder
      */
     @Bean
-    public BoldCyanCompositeConverter boldCyanCompositeConverter {
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 
@@ -109,6 +110,16 @@ public class WebSecurityConfig {
      *
      * @return CustomAuthenticationFilter
      */
+    @Bean
+    public CustomAuthenticationFilter customAuthenticationFilter() {
+        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManager());
+        customAuthenticationFilter.setFilterProcesseUrl("/login");
+        customAuthenticationFilter.setAuthenticationSuccessHandler(customAuthLoginSuccessHandler());
+        customAuthenticationFilter.setAuthenticationFailureHandler(customAuthLoginFailureHandler());
+
+        customAuthenticationFilter.afterPropertiesSet();
+        return customAuthenticationFilter;
+    }
 
 
     /**
@@ -116,6 +127,9 @@ public class WebSecurityConfig {
      *
      * @return CustomAuthSuccessHandler
      */
+    private CustomAuthSuccessHandler customAuthLoginSuccessHandler() {
+        return new CustomAuthSuccessHandler();
+    }
 
 
     /**
@@ -123,5 +137,8 @@ public class WebSecurityConfig {
      *
      * @return CustomAuthFailureHandler
      */
+    private CustomAuthFailureHandler customAuthLoginFailureHandler() {
+        return new CustomAuthFailureHandler();
+    }
 
 }

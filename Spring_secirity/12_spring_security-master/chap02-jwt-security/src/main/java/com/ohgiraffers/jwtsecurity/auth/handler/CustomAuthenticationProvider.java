@@ -21,6 +21,7 @@ public class CustomAuthenticationProvider  implements AuthenticationProvider {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
+    /* authenticate: 비교해서 결과를 주는 애 */
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         UsernamePasswordAuthenticationToken loginToken = (UsernamePasswordAuthenticationToken) authentication;
@@ -42,7 +43,9 @@ public class CustomAuthenticationProvider  implements AuthenticationProvider {
     }
 
     @Override
+    /* supports: 토큰 타입에 따라서 어떤 타입인지에 따라서 Provider를 언제 사용할 것인지 지정
+    * 내가 주는 값이 맞다면 true를 반환 */
     public boolean supports(Class<?> authentication) {
-        return false;
+        return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 }
