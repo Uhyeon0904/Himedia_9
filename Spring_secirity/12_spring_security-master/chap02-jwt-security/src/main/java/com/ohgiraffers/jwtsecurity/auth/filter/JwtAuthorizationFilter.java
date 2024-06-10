@@ -63,7 +63,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
                     DetailsUser authentication = new DetailsUser();
                     User user = new User();
                     /* claims에서 이름을 꺼내온다. 반환 타입이 Object 이기때문에 toString */
-                    user.setUserName(claims.get("username").toString());
+                    user.setUserName(claims.get("userName").toString());
                     /* claims에서 권한을 꺼내온다. 반환 타입이 Object 이기때문에 toString */
                     user.setRole(UserRole.valueOf(claims.get("Role").toString()));
                     authentication.setUser(user);

@@ -154,7 +154,7 @@ public class TokenUtils {
     private static Map<String, Object> createClaims(User user) {
         Map<String, Object> claims = new HashMap<>();
 
-        claims.put("username", user.getUserName());
+        claims.put("userName", user.getUserName());
         claims.put("Role", user.getRole());
 
         return claims;
