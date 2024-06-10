@@ -112,7 +112,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
         } else if (e instanceof JwtException) {
             resultMsg = "Token Parsing JwtException";
         } else {
-            resultMsg = "othe Token Error";
+            resultMsg = "other Token Error";
         }
         HashMap<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("status", 401);

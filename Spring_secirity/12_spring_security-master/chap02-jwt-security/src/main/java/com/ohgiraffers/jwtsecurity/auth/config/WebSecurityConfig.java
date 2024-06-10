@@ -51,12 +51,11 @@ public class WebSecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 /* jwtAuthorizationFilter: 토큰 인증 후 사용자 인증 정보를 세팅 */
                 .addFilterBefore(jwtAuthorizationFilter(), BasicAuthenticationFilter.class)
-                .sessionManagement(session -> session.sessionCreationPolicy(sessionCreationPolicy.STATLESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(form -> form.disable())
                 /* customAuthoricationFilter: 로그인에 대한 url 등록,*/
-                .addFilterBefore(customAuthoricationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .httpBasic((basic -> basic.disable()));
-
         return http.build();
     }
 
@@ -113,7 +112,7 @@ public class WebSecurityConfig {
     @Bean
     public CustomAuthenticationFilter customAuthenticationFilter() {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManager());
-        customAuthenticationFilter.setFilterProcesseUrl("/login");
+        customAuthenticationFilter.setFilterProcessesUrl("/login");
         customAuthenticationFilter.setAuthenticationSuccessHandler(customAuthLoginSuccessHandler());
         customAuthenticationFilter.setAuthenticationFailureHandler(customAuthLoginFailureHandler());
 

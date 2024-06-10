@@ -26,5 +26,11 @@ public class UserController {
         user.setUserPass(passwordEncoder.encode(user.getUserPass()));
         user.setState("Y");
         User value = userRepository.save(user);
+
+        if (Objects.isNull(value)) {
+            return "회원 가입 실패";
+        } else {
+            return "회원 가입 성공!";
+        }
     }
 }

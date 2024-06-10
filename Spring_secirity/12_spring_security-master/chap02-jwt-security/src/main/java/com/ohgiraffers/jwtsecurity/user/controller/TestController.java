@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@PreAuthorize("hasAuthority('ADMIN')")
+/* PreAuthorize: 어노테이션에 권한 설정 */
+//@PreAuthorize("hasAuthority('ADMIN')")
 public class TestController {
 
     @GetMapping("/test")
