@@ -2,6 +2,8 @@ package com.ohgiraffers.jwtsecurity.common.utils;
 
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,7 +18,7 @@ public class TokenUtils {
 
     private static String jwtSecretKey;
 
-    private static String tokenValidateTime;
+    private static Long tokenValidateTime;
 
     @Value("${jwt.key}")
     public void setJwtSecretKey(String jwtSecretKey) {
@@ -24,7 +26,7 @@ public class TokenUtils {
     }
 
     @Value("${jwt.time}")
-    public void setTokenValidateTime(String tokenValidateTime) {
+    public void setTokenValidateTime(Long tokenValidateTime) {
         TokenUtils.tokenValidateTime = tokenValidateTime;
     }
 
@@ -62,7 +64,19 @@ public class TokenUtils {
         try {
             Claims claims = getClaimsFromToken(token);
             return true;
-        } catch (Exception e) {}
+        } catch (ExpiredJwtException e) {
+            /* 토큰이 만료 됐을 때 */
+            e.printStackTrace();
+            return false;
+        } catch (JwtException e) {
+            /* 토큰 자체에 에러가 났을 때 */
+            e.printStackTrace();
+            return false;
+        } catch (NullPointerException e) {
+            /* 토큰이 비어있을 때*/
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

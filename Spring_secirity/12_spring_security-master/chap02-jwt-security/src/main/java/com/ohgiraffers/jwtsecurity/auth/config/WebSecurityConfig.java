@@ -1,5 +1,6 @@
 package com.ohgiraffers.jwtsecurity.auth.config;
 
+import ch.qos.logback.core.pattern.color.BoldCyanCompositeConverter;
 import com.ohgiraffers.jwtsecurity.auth.filter.CustomAuthenticationFilter;
 import com.ohgiraffers.jwtsecurity.auth.filter.JwtAuthorizationFilter;
 import com.ohgiraffers.jwtsecurity.auth.handler.CustomAuthFailureHandler;
@@ -21,6 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
+/* 인가에 대해서 어노테이션을 달아주는 방식 */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
 
@@ -29,6 +31,10 @@ public class WebSecurityConfig {
      *
      * @return WebSecurityCustomizer
      */
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return web -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+    }
 
 
     /**
@@ -38,6 +44,21 @@ public class WebSecurityConfig {
      * @return SecurityFilterChain
      * @throws Exception
      */
+    /* 핵심 메소드 */
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        /* csrf: 설정을 disable */
+        http.csrf(AbstractHttpConfigurer::disable)
+                /* jwtAuthorizationFilter: 토큰 인증 후 사용자 인증 정보를 세팅 */
+                .addFilterBefore(jwtAuthorizationFilter(), BasicAuthenticationFilter.class)
+                .sessionManagement(session -> session.sessionCreationPolicy(sessionCreationPolicy.STATLESS))
+                .formLogin(form -> form.disable())
+                /* customAuthoricationFilter: 로그인에 대한 url 등록,*/
+                .addFilterBefore(customAuthoricationFilter(), UsenamePasswordAuthenticationFilter.class)
+                .httpBasic((basic -> basic.disable()));
+
+        return http.build();
+    }
 
 
     /**
@@ -45,6 +66,10 @@ public class WebSecurityConfig {
      *
      * @return JwtAuthorizationFilter
      */
+    private JwtAuthorizationFilter jwtAuthorizationFilter() {
+        /* BasicAuthenticationFilter를 상속 받는다. */
+        return new JwtAuthorizationFilter(authenticationManager());
+    }
 
 
     /**
@@ -52,6 +77,10 @@ public class WebSecurityConfig {
      *
      * @return AuthenticationManager
      */
+    @Bean
+    public AuthenticationManager authenticationManager() {
+        return new ProviderManager(customAuthenticationProvider());
+    }
 
 
     /**
@@ -59,6 +88,10 @@ public class WebSecurityConfig {
      *
      * @return CustomAuthenticationProvider
      */
+    @Bean
+    public CustomAuthenticationProvider customAuthenticationProvider() {
+        return new CustomAuthenticationProvider();
+    }
 
 
     /**
@@ -66,6 +99,9 @@ public class WebSecurityConfig {
      *
      * @return BCryptPasswordEncoder
      */
+    @Bean
+    public BoldCyanCompositeConverter boldCyanCompositeConverter {
+    }
 
 
     /**
