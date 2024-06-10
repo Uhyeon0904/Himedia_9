@@ -31,10 +31,15 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         /* 토큰 생성 */
-        UsernamePasswordAuthenticationToken authenticationToken;
+        UsernamePasswordAuthenticationToken authRequest;
 
-        authRequest = getAuthRequest(request);
-        setDetails(request, authRequest);
+        try {
+            authRequest = getAuthRequest(request);
+            setDetails(request, authRequest);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return this.getAuthenticationManager().authenticate(authRequest);
     }
 
 
@@ -45,5 +50,20 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
      * @return UsernamePasswordAuthenticationToken
      * @throws IOException
      */
+    /* 임시 토큰 생성
+    * HttpServletRequest request로 파라미터를 받는다. */
+    private UsernamePasswordAuthenticationToken getAuthRequest(HttpServletRequest request) throws IOException {
+
+        /* ObjectMapper: JSON 타입으로 변환 */
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        /* json 파싱하는 구문, 만약 판별하기 어렵다면 자동으로 ??? */
+        objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
+
+        /* InputStream으로 읽어서 LoginDTO 타입으로 변환
+        * getInputStream: 예외처리 필요 */
+        LoginDTO user = objectMapper.readValue(request.getInputStream(), LoginDTO.class);
+        return new UsernamePasswordAuthenticationToken(user.getId(), user.getPass());
+    }
 
 }

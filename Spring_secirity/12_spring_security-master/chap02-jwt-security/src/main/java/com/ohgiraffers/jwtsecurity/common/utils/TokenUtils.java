@@ -1,14 +1,17 @@
 package com.ohgiraffers.jwtsecurity.common.utils;
 
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
+import com.ohgiraffers.jwtsecurity.user.entity.User;
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
+import java.security.Key;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
  * 토큰을 관리하기 위한 utils 모음 클래스
@@ -104,12 +107,42 @@ public class TokenUtils {
      * @param user
      * @return token (String)
      */
+    public static String generateJwtToken(User user) {
+        /* 토큰 만료시간 */
+        Date expireTime = new Date(System.currentTimeMillis() + tokenValidateTime);
+
+        JwtBuilder builder = Jwts.builder()
+                /* 헤더 */
+                .setHeader(createHeader())
+                /* 페이로드 */
+                .setClaims(createClaims(user))
+                .setSubject("ohgiraffers token" + user.getUserNo())
+                /* 시그너처
+                * SignatureAlgorithm.HS256: 시그니처 암호화 알고리즘 */
+                .signWith(SignatureAlgorithm.HS256, createSignature())
+                .setExpiration(expireTime);
+
+        /* compact: 문자열로 변환 */
+        return builder.compact();
+    }
 
     /**
      * description. 토큰의 header를 설정하는 메소드
      *
      * @return Map<String, Object> (header의 설정 정보)
      */
+    private static Map<String, Object> createHeader() {
+        Map<String, Object> header = new HashMap<>();
+
+        /* 타입이 json web token */
+        header.put("type", "jwt");
+        /* 알고리즘으로 암호화 방식 설정 */
+        header.put("alg", "HS256");
+        /* 만들어진 시간 정보 */
+        header.put("date", System.currentTimeMillis());
+
+        return header;
+    }
 
 
     /**
@@ -118,12 +151,26 @@ public class TokenUtils {
      * @param user (사용자 정보)
      * @return Map<String, Object> (claims 정보)
      */
+    private static Map<String, Object> createClaims(User user) {
+        Map<String, Object> claims = new HashMap<>();
+
+        claims.put("username", user.getUserName());
+        claims.put("Role", user.getRole());
+
+        return claims;
+    }
 
 
     /**
-     * description. JWT 서명을 발급하는 메소드
+     * description. JWT 서명(시그니처)을 발급하는 메소드
      *
      * @return Key : SecretKeySpec
      */
+    /* 시큐리티가 갖고 있는 Key를 반환해 준다. */
+    private static Key createSignature() {
+        byte[] secretBytes = DatatypeConverter.parseBase64Binary(jwtSecretKey);
+
+        return new SecretKeySpec(secretBytes, SignatureAlgorithm.HS256.getJcaName());
+    }
 
 }
