@@ -36,16 +36,16 @@ function App() {
             <Route path="product-modify/:productCode" element={<ProtectedRoute authCheck={true}><ProductModify/></ProtectedRoute>}/>
             <Route path="order" element={<ProtectedRoute loginCheck={true}><Order/></ProtectedRoute>} />
         </Route>
-          <Route path="/member">
-              <Route path="signup" element={<ProtectedRoute loginCheck={false}><Signup/></ProtectedRoute>}/>
-              <Route path="login" element={<ProtectedRoute loginCheck={false}><Login/></ProtectedRoute>}/>
-              <Route path="mypage" element={<ProtectedRoute loginCheck={true}><MyPageLayout/></ProtectedRoute> }>
-                  <Route index element={ <Navigate to="/member/mypage/profile" replace/> }/>
-                  <Route path="profile" element={ <Profile/> }/>
-                  <Route path="payment" element={ <OrderList/>}/>
-              </Route>
-          </Route>
-          <Route path="*" element={ <Error/> }/>
+        <Route path="/member">
+            <Route path="signup" element={<ProtectedRoute loginCheck={false}><Signup/></ProtectedRoute>}/>
+            <Route path="login" element={<ProtectedRoute loginCheck={false}><Login/></ProtectedRoute>}/>
+            <Route path="mypage" element={<ProtectedRoute loginCheck={true}><MyPageLayout/></ProtectedRoute> }>
+                <Route index element={ <Navigate to="/member/mypage/profile" replace/> }/>
+                <Route path="profile" element={ <Profile/> }/>
+                <Route path="payment" element={ <OrderList/>}/>
+            </Route>
+        </Route>
+        <Route path="*" element={ <Error/> }/>
       </Routes>
     </BrowserRouter>
   );
