@@ -1,8 +1,6 @@
 package com.ohgiraffers.comprehensive.product.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class Category {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryCode;
     private String categoryName;
 }

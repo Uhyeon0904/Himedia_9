@@ -20,15 +20,18 @@ import org.springframework.web.multipart.MultipartFile;
 import java.net.URI;
 
 @RestController
+/* final 키워드 필드에 생성자 자동 생성 */
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
 public class ProductController {
 
+    /* 이녀석이 자동 생성 됨 */
     private final ProductService productService;
 
     /* 상품 목록 조회 (고객) */
     @GetMapping("/products")
     public ResponseEntity<PagingResponse> getCustomerProducts(
+            /* defaultValue: 요청 값으로 page 값이 넘어오지 않을 경우 디폴트 값 1 설정 */
             @RequestParam(defaultValue = "1") final Integer page,
             @RequestParam(required = false) final Long categoryCode,
             @RequestParam(required = false) final String productName
