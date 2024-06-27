@@ -6,6 +6,12 @@ const initialState = {};
 const GET_PRODUCTS = 'product/GET_PRODUCTS';
 const GET_PRODUCT = 'product/GET_PRODUCT';
 const SUCCESS = 'product/SUCCESS';
+/* {
+    product: {
+        getProducts: {type: 'product/GET_PRODUCTS', payload: {products : result.data }} 를 만드는 함수,
+        getProduct: {type: ~~`, payload: ~~}
+    }
+    } */
 /* 액션 함수 */
 export const { product : { getProducts, getProduct, success }} = createActions({
     [GET_PRODUCTS] : result => ({products : result.data }),
