@@ -1,8 +1,10 @@
 import axios from "axios";
 import {getAccessTokenHeader, getRefreshTokenHeader, saveToken} from "../utils/TokenUtils";
 
+/* IP와 PORT가 리액트 실행 시 자동으로 환경에 맞춰 설정이 된다. */
 const SERVER_IP = `${process.env.REACT_APP_RESTAPI_SERVER_IP}`;
 const SERVER_PORT = `${process.env.REACT_APP_RESTAPI_SERVER_PORT}`;
+/* 로컬호스트 8080 처럼 디폴트 url을 붙여준다. */
 const DEFAULT_URL = `http://${SERVER_IP}:${SERVER_PORT}`;
 
 /* 인증이 필요 없는 (토큰을 전달하지 않아도 되는) 기능 호출 시 사용하는 함수 */
